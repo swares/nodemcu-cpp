@@ -1,11 +1,22 @@
 # nodemcu-cpp
 Test Iot - non lua version for nodemcu lua IoT board
 
-        Nodemcu  : Environmental Monitor #1
-        Location : front porch
-        Power    : Solar Pannel + LIon Battery Pack + AMS1117 at 3.3v.
-        Sensing  : Air: Humidity, Temperature.  
-                   EMP: Lightning Range, Power.
+        Name             : Environmental Monitor #1
+        Location         : Front Porch
+        Device           : Nodemcu
+        Power Source     : Solar Pannel + LIon Battery Pack
+        Power Level      : 3.3v.
+        Power Components : Solar Pannel + LIon Battery Pack + AMS1117
+        Sensing          : Air: Humidity, Temperature.  
+                         : EMP: Lightning Range, Power.
+
+        Name             : Environmental Monitor #2
+        Location         : Garage Door, beside or above
+        Device           : Ardunio Mega 2560
+        Power Source     : Adapter from security lighting 120v / 5v Adapter
+        Power Level      : 5v.
+        Power Components : Plug Adapter for light fixture, Power Adapter for Arduino 5v
+        Sensing          : Air: CO, Quality, Smog, Particulates.
 
         Config / Main
         -------------
