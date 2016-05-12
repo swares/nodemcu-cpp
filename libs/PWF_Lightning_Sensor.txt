@@ -1,0 +1,10 @@
+Notes from AS3935 datasheet:
+Register Map: Page 11, detailed version on Page 12
+
+The SEN-39001 can be used with either I2C or SPI without modification, though pull-up resistors (10k) are
+populated on the board by default. This doesn't seem to hinder operation at room temperature, but may
+have a negative impact on performance in different operating situations. It may be necessary to remove
+these resistors for your specific app. 
+
+Connections should be made per the 'Circuit' description. This configuration is the setup that has been
+tested by Playing With Fusion engineers.
