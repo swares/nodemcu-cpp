@@ -27,7 +27,7 @@ Test Iot - non lua version for nodemcu lua IoT board
         ----------
         network_mqtt.ino   MQTT Client
         network_ntp.ino    NTP Client
-        network_wifi.ino   WIFI Access
+        network_wifi.ino   WIFI Client
         
         Sensors
         -------
