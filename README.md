@@ -20,19 +20,19 @@ Test Iot - non lua version for nodemcu lua IoT board
 
         Config / Main
         -------------
-        config.ino 	       Configuration Parameters
-        init.ino 	         Main Code
+        config.ino         Configuration Parameters
+        init.ino           Main Code
         
         Networking
         ----------
-        network_mqtt.ino 	 MQTT Client
-        network_ntp.ino 	 NTP Client
-        network_wifi.ino 	 WIFI Access
+        network_mqtt.ino   MQTT Client
+        network_ntp.ino    NTP Client
+        network_wifi.ino   WIFI Access
         
         Sensors
         -------
         sensor_bmp180.ino  Barometric Air Pressure, Air Temperature Sensor
-        sensor_dht22.ino 	 Airborn Humidity, Air Temperature Sensor
+        sensor_dht22.ino   Airborn Humidity, Air Temperature Sensor
         sensor_as3935.ino  Lightning Distance, Lightning Power
 
         Libraries
