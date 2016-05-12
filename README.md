@@ -37,6 +37,6 @@ Test Iot - non lua version for nodemcu lua IoT board
 
         Libraries
         ---------
-        
+        PWFusion_AS3935_I2C  http://www.playingwithfusion.com/include/getfile.php?fileid=7043
         
         
