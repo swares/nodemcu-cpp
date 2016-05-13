@@ -150,8 +150,11 @@ void loop()
     Serial.print(lightning_dist_km);
     Serial.println(" kilometers");
 
-// AS3935_GetStrikeEnergyRaw
-   uint8_t lightning_energy = lightning0.AS3935_GetStrikeEnergyRaw();
+    uint8_t lightning_dist_mi = lightning_dist_km * 0.621;
+    Serial.print(lightning_dist_mi);
+    Serial.println(" miles");
+
+    uint8_t lightning_energy = lightning0.AS3935_GetStrikeEnergyRaw();
     Serial.print("Lightning detected! Strike Energy: ");
     Serial.print(lightning_energy);
     Serial.println(" raw");
