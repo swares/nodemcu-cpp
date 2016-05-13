@@ -149,6 +149,9 @@ void loop()
     Serial.print("Lightning detected! Distance to strike: ");
     Serial.print(lightning_dist_km);
     Serial.println(" kilometers");
+
+// AS3935_GetStrikeEnergyRaw
+
   }
   else if(2 == int_src)
   {
