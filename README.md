@@ -39,4 +39,8 @@ Test Iot - non lua version for nodemcu lua IoT board
         ---------
         PWFusion_AS3935_I2C  http://www.playingwithfusion.com/include/getfile.php?fileid=7043
         
+
+
+Output type enable. ... I serial on off
+Output templates to use... by sensor... for http, etc.
         
