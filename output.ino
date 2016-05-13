@@ -42,3 +42,9 @@ const char signMessage[] PROGMEM  = {"I AM PREDATOR,  UNSEEN COMBATANT. CREATED 
 
 
 # Trim down unneeded functions / code in libs
+
+| Memory Specs        | ESP-12                 | ESP-12E                |          
+| Flash Memory        | 512KB                  | 512KB                  |
+| SRAM                | 64 KB SRAM / 96KB DRAM | 64 KB SRAM / 96KB DRAM |
+| EEPROM              | 4M                     | 4M?                    |
+
