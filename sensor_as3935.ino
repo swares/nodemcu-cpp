@@ -151,6 +151,10 @@ void loop()
     Serial.println(" kilometers");
 
 // AS3935_GetStrikeEnergyRaw
+   uint8_t lightning_energy = lightning0.AS3935_GetStrikeEnergyRaw();
+    Serial.print("Lightning detected! Strike Energy: ");
+    Serial.print(lightning_energy);
+    Serial.println(" raw");
 
   }
   else if(2 == int_src)
