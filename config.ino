@@ -2,9 +2,6 @@
 
 // The AS3935 communicates via SPI or I2C. 
 // This example uses the I2C interface via the I2C lib, not Wire lib
-#include "I2C.h"
-// include Playing With Fusion AXS3935 libraries
-#include "PWFusion_AS3935_I2C.h"
 
 // interrupt trigger global var        
 volatile int8_t AS3935_ISR_Trig = 0;
