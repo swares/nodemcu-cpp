@@ -1,5 +1,18 @@
 # Code for Configuration Parameters
 
+//# turn on and off debugging
+//#define DEVMODE;
+
+//# logging - output all debugging output to sdcard
+//#define output_sdcard_debug_log;
+
+//# Enable Sensors
+#define enable_bmp180
+//#define enable_dht22
+//#define enable_as3935
+//#define enable_ds3231_at24c32
+
+//# sensor parameters below
 // The AS3935 communicates via SPI or I2C. 
 // This example uses the I2C interface via the I2C lib, not Wire lib
 
