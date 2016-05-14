@@ -61,6 +61,13 @@
 
 //# sensor parameters below
 
+// if defined load params for the BMP180 sensor
+#if defined(enable_bmp180)
+  #include <Wire.h>
+  #include <Adafruit_Sensor.h>
+  #include <Adafruit_BMP085_U.h>
+#endif
+
 // if defined load params for the as3935 lightning sensor
 #if defined(enable_as3935)
   // The AS3935 communicates via SPI or I2C. 
