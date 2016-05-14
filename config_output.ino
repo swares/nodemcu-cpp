@@ -30,7 +30,6 @@
     const char serial_bmp180_sensor_error[] PROGMEM  = { "Sensor error" };
     const char serial_bmp180_sensor_none[] PROGMEM  = { "Ooops, no BMP085 or BMP185 detected ... Check your wiring or I2C ADDR!" };
   #endif
-
   #if defined(enable_dht22)
     const char serial_dht22_demo[] PROGMEM  = {"DHT22 Library Demo"};
     const char serial_dht22_req_data[] PROGMEM  = {"Requesting data..."};
@@ -46,7 +45,18 @@
     const char serial_dht22_sensor_data_timeout[] PROGMEM  = {"Data Timeout "};
     const char serial_dht22_sensor_poll_too_quick[] PROGMEM  = {"Polled to quick "};
   #endif
-
+  #if defined(enable_as3935)
+    const char serial_as3935_demo[] PROGMEM  = {"Playing With Fusion: AS3935 Lightning Sensor, SEN-39001-R01"};
+    const char serial_as3935_boot[] PROGMEM  = {"beginning boot procedure...."};
+    const char serial_as3935_sensor_int_src_why[] PROGMEM  = {"interrupt source result not expected"};
+    const char serial_as3935_detected[] PROGMEM  = {"Lightning detected! Distance to strike: "};
+    const char serial_as3935_km[] PROGMEM  = {" kilometers"};
+    const char serial_as3935_mi[] PROGMEM  = {" miles"};
+    const char serial_as3935_energy[] PROGMEM  = {"Lightning detected! Strike Energy: "};
+    const char serial_as3935_raw[] PROGMEM  = {" raw"};
+    const char serial_as3935_sensor_disturber[] PROGMEM  = {"Disturber detected"};
+    const char serial_as3935_sensor_noisy[] PROGMEM  = {"Noise level too high"};
+  #endif
 
 #endif
 
