@@ -7,9 +7,16 @@
 
 // load web pages if output_webserver is defined
 #if defined(output_webserver)
+  // http headers
   const char web_http200[] PROGMEM  = { "HTTP/1.1 200 OK\nContent-Type: text/html\nConnection: keep-alive\n\n" };
-  const char web_http404[] PROGMEM  = { "HTTP/1.1 404 OK\nContent-Type: text/html\nConnection: keep-alive\n\n" };
-  const char web_index[]   PROGMEM  = { "<!DOCTYPE html>\n<html>\n<head>\n<title>Arduino Web Page</title>\n<script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}\n</script>\n</head>\n<body onload='GetSwitchState()'>\n<h1>Arduino AJAX Switch Status</h1>\n<p id='switch_txt'>Switch state: Not requested...</p>\n</body>\n</html>" };
+  const char web_http404[] PROGMEM  = { "HTTP/1.1 404 Error\nContent-Type: text/html\nConnection: keep-alive\n\n" };
+  // html index and error pages
+  const char web_index[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Index</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
+  const char web_error[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Error</title></head><body><h1>Environmental Monitoring Station - Error</h1><p id='error_txt'>Some Error Occured</p></body></html>" };
+  // load web pages if enable_bmp180 is defined
+  #if defined(enable_switches)
+    const char web_index[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Switches</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station - Switches</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
+  #endif
   // load web pages if enable_bmp180 is defined
   #if defined(enable_bmp180)
     const char web_bmp180[]  PROGMEM  = { "" };
