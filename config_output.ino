@@ -9,6 +9,28 @@
 //# - Javascript, AJAX, Images, Links, CSS.
 //# htDS3231_AT24C32log.startingelectronics.com/arduino-web-server-tutorial/
 
+// load serial messages if output_serial is defined
+#if defined(output_serial)
+  // load serial messages if enable_bmp180 is defined
+  #if defined(enable_bmp180)
+    const char serial_bmp180_sensor[] PROGMEM  = { "Sensor:       " };
+    const char serial_bmp180_driver[] PROGMEM  = { "Driver Ver:   " };
+    const char serial_bmp180_uniqid[] PROGMEM  = { "Unique ID:    " };
+    const char serial_bmp180_max_val_hpa[] PROGMEM  = { "Max Value hPa:    " };
+    const char serial_bmp180_min_val_hpa[] PROGMEM  = { "Min Value - hPa:    " };
+    const char serial_bmp180_res_hpa[] PROGMEM  = { "Resolution - hPa:" };   
+    const char serial_bmp180_devider[] PROGMEM  = { "------------------------------------" };
+    const char serial_bmp180_test[] PROGMEM  = { "Pressure Sensor Test" }; 
+    const char serial_bmp180_pressure_hpa[] PROGMEM  = { "Pressure - hPa:    " };
+    const char serial_bmp180_temp_c[] PROGMEM  = { "Temperature - C:" };
+    const char serial_bmp180_altitude_m[] PROGMEM  = { "Altitude - m:    " }; 
+    const char serial_bmp180_sensor_error[] PROGMEM  = { "Sensor error" };
+    const char serial_bmp180_sensor_none[] PROGMEM  = { "Ooops, no BMP085 or BMP185 detected ... Check your wiring or I2C ADDR!" };
+  #endif
+
+
+#endif
+
 // load web pages if output_webserver is defined
 #if defined(output_webserver)
   // http headers
