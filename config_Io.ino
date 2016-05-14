@@ -5,18 +5,6 @@
 #define output_webserver;
 #define output_mqtt;
 
-//# turn on and off debugging
-//#define DEVMODE;
-
-//# logging - output all debugging output to sdcard
-//#define output_sdcard_debug_log;
-
-//# Enable Sensors
-#define enable_bmp180
-//#define enable_dht22
-//#define enable_as3935
-//#define enable_ds3231_at24c32
-
 // load web pages if output_webserver is defined
 #if defined(output_webserver)
   const char web_http200[] PROGMEM  = { "HTTP/1.1 200 OK\nContent-Type: text/html\nConnection: keep-alive\n\n" };
