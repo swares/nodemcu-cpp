@@ -14,15 +14,17 @@ bool output_webserver;
 //bool output_sdcard_debug_log;
 
 #if defined(output_webserver)
-  const char web_http200[] PROGMEM  = {"HTTP/1.1 200 OK\nContent-Type: text/html\nConnection: keep-alive\n\n"};
-  const char web_http404[] PROGMEM  = {"I AM PREDATOR,  UNSEEN COMBATANT. CREATED BY THE UNITED STATES DEPART"};
-  const char web_index[] PROGMEM  = {"I AM PREDATOR,  UNSEEN COMBATANT. CREATED BY THE UNITED STATES DEPART"};
-  const char web_bmp180[] PROGMEM  = {"I AM PREDATOR,  UNSEEN COMBATANT. CREATED BY THE UNITED STATES DEPART"};
-  const char web_dht22[] PROGMEM  = {"I AM PREDATOR,  UNSEEN COMBATANT. CREATED BY THE UNITED STATES DEPART"};
-  const char web_as3935[] PROGMEM  = {"I AM PREDATOR,  UNSEEN COMBATANT. CREATED BY THE UNITED STATES DEPART"};
-  const char web_ds3231_at24c32[] PROGMEM  = {"I AM PREDATOR,  UNSEEN COMBATANT. CREATED BY THE UNITED STATES DEPART"};
+  const char web_http200[] PROGMEM  = { "HTTP/1.1 200 OK\nContent-Type: text/html\nConnection: keep-alive\n\n" };
+  const char web_http404[] PROGMEM  = { "HTTP/1.1 404 OK\nContent-Type: text/html\nConnection: keep-alive\n\n" };
+  const char web_index[]   PROGMEM  = { "<!DOCTYPE html>\n<html>\n<head>\n<title>Arduino Web Page</title>\n<script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}\n</script>\n</head>\n<body onload='GetSwitchState()'>\n<h1>Arduino AJAX Switch Status</h1>\n<p id='switch_txt'>Switch state: Not requested...</p>\n</body>\n</html>" };
+  const char web_bmp180[]  PROGMEM  = { "" };
+  const char web_dht22[]   PROGMEM  = { "" };
+  const char web_as3935[]  PROGMEM  = { "" };
+  const char web_ds3231_at24c32[] PROGMEM  = { "" };
   
 #endif
+
+={"<!DOCTYPE html>\n<html>\n<head>\n<title>Arduino Web Page</title>\n<script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}\n</script>\n</head>\n<body onload='GetSwitchState()'>\n<h1>Arduino AJAX Switch Status</h1>\n<p id='switch_txt'>Switch state: Not requested...</p>\n</body>\n</html>"};
 
 
 //# Use Arduino AJAX Web Server with pages saved on sdcard or eeprom or program mem.
