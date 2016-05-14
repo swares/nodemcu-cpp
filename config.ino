@@ -6,11 +6,26 @@
 //# logging - output all debugging output to sdcard
 //#define output_sdcard_debug_log;
 
-//# Enable Sensors
-#define enable_bmp180
-//#define enable_dht22
-//#define enable_as3935
-//#define enable_ds3231_at24c32
+//# Enable Sensor Group
+#define station01;
+//#define station02;
+//#define station03;
+//#define station04;
+#if defined(station01)
+  #define enable_bmp180
+  #define enable_dht22
+  #define enable_as3935
+  #define enable_ds3231_at24c32
+#endif
+#if defined(station02)
+  #define enable_ds3231_at24c32
+#endif
+#if defined(station03)
+  #define enable_ds3231_at24c32
+#endif
+#if defined(station04)
+  #define enable_ds3231_at24c32
+#endif
 
 //# sensor parameters below
 
