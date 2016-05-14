@@ -1,33 +1,4 @@
 # Code for BMP080 and BMP180 Air Pressure Sensor
-
-
-Skip to content
-This repository
-
-    Pull requests
-    Issues
-    Gist
-
-    @swares
-
-24
-49
-
-    38
-
-adafruit/Adafruit_BMP085_Unified
-Code
-Issues 3
-Pull requests 2
-Wiki
-Pulse
-Graphs
-Adafruit_BMP085_Unified/examples/sensorapi/sensorapi.pde
-67ae2e6 Sep 19, 2014
-@tdicola tdicola Update pressure calculation to use equations from BMP datasheet inste…
-@microbuilder
-@tdicola
-133 lines (117 sloc) 4.92 KB
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 #include <Adafruit_BMP085_U.h>
@@ -159,9 +130,3 @@ void loop(void)
   }
   delay(1000);
 }
-
-    Status API Training Shop Blog About 
-
-    © 2016 GitHub, Inc. Terms Privacy Security Contact Help 
-
-
