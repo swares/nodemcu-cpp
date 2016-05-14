@@ -11,6 +11,9 @@
 
 // load serial messages if output_serial is defined
 #if defined(output_serial)
+  // serial headers
+  const char serial_hearer[] PROGMEM  = { "Environmental Monitoring Station - Index" };
+  const char serial_error[] PROGMEM  = { "Environmental Monitoring Station - Error" };
   // load serial messages if enable_bmp180 is defined
   #if defined(enable_bmp180)
     const char serial_bmp180_sensor[] PROGMEM  = { "Sensor:       " };
