@@ -68,6 +68,15 @@
   #include <Adafruit_BMP085_U.h>
 #endif
 
+// if defined load params for the DHT22 sensor
+#if defined(enable_dht22)
+  #include <stdio.h>
+  // Data wire is plugged into port 7 on the Arduino
+  // Connect a 4.7K resistor between VCC and the data pin (strong pullup)
+  #define DHT22_PIN 7
+#endif
+
+
 // if defined load params for the as3935 lightning sensor
 #if defined(enable_as3935)
   // The AS3935 communicates via SPI or I2C. 
