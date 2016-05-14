@@ -35,15 +35,16 @@
     const char serial_dht22_demo[] PROGMEM  = {"DHT22 Library Demo"};
     const char serial_dht22_req_data[] PROGMEM  = {"Requesting data..."};
     const char serial_dht22_got_data[] PROGMEM  = {"Got Data "};
-    const char serial_dht22_checksum[] PROGMEM  = {"check sum error "};
     const char serial_dht22_c[] PROGMEM  = {"C "};
+    const char serial_dht22_f[] PROGMEM  = {"F "};
     const char serial_dht22_percent[] PROGMEM  = {"%"};
-    const char serial_dht22_buss_hung[] PROGMEM  = {"BUS Hung "};
-    const char serial_dht22_none[] PROGMEM  = {"Not Present "};
-    const char serial_dht22_ack_timeout[] PROGMEM  = {"ACK time out "};
-    const char serial_dht22_sync_timeout[] PROGMEM  = {"Sync Timeout "};
-    const char serial_dht22_data_timeout[] PROGMEM  = {"Data Timeout "};
-    const char serial_dht22_poll_too_qiuck[] PROGMEM  = {"Polled to quick "};
+    const char serial_dht22_sensor_checksum[] PROGMEM  = {"check sum error "};
+    const char serial_dht22_sensor_buss_hung[] PROGMEM  = {"BUS Hung "};
+    const char serial_dht22_sensor_none[] PROGMEM  = {"Not Present "};
+    const char serial_dht22_sensor_ack_timeout[] PROGMEM  = {"ACK time out "};
+    const char serial_dht22_sensor_sync_timeout[] PROGMEM  = {"Sync Timeout "};
+    const char serial_dht22_sensor_data_timeout[] PROGMEM  = {"Data Timeout "};
+    const char serial_dht22_sensor_poll_too_quick[] PROGMEM  = {"Polled to quick "};
   #endif
 
 
