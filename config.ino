@@ -63,14 +63,26 @@
 
 // if defined load params for the BMP180 sensor
 #if defined(enable_bmp180)
-  #include <Wire.h>
-  #include <Adafruit_Sensor.h>
-  #include <Adafruit_BMP085_U.h>
+  #ifndef LIB_Wire
+    #define LIB_Wire
+    #include <Wire.h>
+  #endif
+  #ifndef LIB_Adafruit_Sensor
+    #define LIB_Adafruit_Sensor
+    #include <Adafruit_Sensor.h>
+  #endif
+  #ifndef LIB_Adafruit_BMP085_U
+    #define LIB_Adafruit_BMP085_U
+    #include <Adafruit_BMP085_U.h>
+  #endif
 #endif
 
 // if defined load params for the DHT22 sensor
 #if defined(enable_dht22)
-  #include <stdio.h>
+  #ifndef LIB_stdio
+    #define LIB_stdio
+    #include <stdio.h>
+  #endif
   // Data wire is plugged into port 7 on the Arduino
   // Connect a 4.7K resistor between VCC and the data pin (strong pullup)
   #define DHT22_PIN 7
