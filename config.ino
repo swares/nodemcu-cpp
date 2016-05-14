@@ -12,13 +12,14 @@
 //#define station03;
 //#define station04;
 #if defined(station01)
-  #define enable_bmp180
-  #define enable_dht22
-  #define enable_as3935
-  #define enable_ds3231_at24c32
+  #define enable_switches;
+  #define enable_bmp180;
+  #define enable_dht22;
+  #define enable_as3935;
+  #define enable_ds3231_at24c32;
 #endif
 #if defined(station02)
-  #define enable_ds3231_at24c32
+  #define enable_ds3231_at24c32;
 #endif
 #if defined(station03)
   #define enable_ds3231_at24c32
