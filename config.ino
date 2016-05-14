@@ -93,6 +93,14 @@
 #if defined(enable_as3935)
   // The AS3935 communicates via SPI or I2C. 
   // This example uses the I2C interface via the I2C lib, not Wire lib
+  #ifndef LIB_I2C
+    #define LIB_I2C
+    #include "I2C.h"
+  #endif
+  #ifndef LIB_PWFusion_AS3935_I2C
+    #define LIB_PWFusion_AS3935_I2C
+    #include "PWFusion_AS3935_I2C.h"
+  #endif
 
   // interrupt trigger global var        
   volatile int8_t AS3935_ISR_Trig = 0;
