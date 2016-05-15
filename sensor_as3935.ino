@@ -83,7 +83,6 @@ PWF_AS3935_I2C  lightning0((uint8_t)IRQ_PIN, (uint8_t)SI_PIN, (uint8_t)AS3935_AD
 void setup()
 {
   
-  Serial.begin(115200);
   Serial.println(serial_as3935_title);
   Serial.println(serial_as3935_boot);
   
