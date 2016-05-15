@@ -1,4 +1,4 @@
-# Code for MQTT Messaging Service
+//# Code for MQTT Messaging Service
 /*
  Basic ESP8266 MQTT example
  This sketch demonstrates the capabilities of the pubsub library in combination
@@ -34,31 +34,10 @@ long lastMsg = 0;
 char msg[50];
 int value = 0;
 
-void setup_wifi() {
-
-  delay(10);
-  // We start by connecting to a WiFi network
-  Serial.println();
-  Serial.print("Connecting to ");
-  Serial.println(ssid);
-
-  WiFi.begin(ssid, password);
-
-  while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
-    Serial.print(".");
-  }
-
-  Serial.println("");
-  Serial.println("WiFi connected");
-  Serial.println("IP address: ");
-  Serial.println(WiFi.localIP());
-}
-
 void callback(char* topic, byte* payload, unsigned int length) {
-  Serial.print("Message arrived [");
+  Serial.print(serial_mqtt_msg_arrived);
   Serial.print(topic);
-  Serial.print("] ");
+  Serial.print(serial_mqtt_spacer);
   for (int i = 0; i < length; i++) {
     Serial.print((char)payload[i]);
   }
@@ -78,18 +57,18 @@ void callback(char* topic, byte* payload, unsigned int length) {
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
-    Serial.print("Attempting MQTT connection...");
+    Serial.print(serial_mqtt_connecting);
     // Attempt to connect
-    if (client.connect("ESP8266Client")) {
+    if (client.connect(serial_mqtt_connected)) {
       Serial.println("connected");
       // Once connected, publish an announcement...
       client.publish("outTopic", "hello world");
       // ... and resubscribe
       client.subscribe("inTopic");
     } else {
-      Serial.print("failed, rc=");
+      Serial.print(serial_mqtt_failed);
       Serial.print(client.state());
-      Serial.println(" try again in 5 seconds");
+      Serial.println(serial_mqtt_trying_again);
       // Wait 5 seconds before retrying
       delay(5000);
     }
@@ -116,7 +95,7 @@ void loop() {
     lastMsg = now;
     ++value;
     snprintf (msg, 75, "hello world #%ld", value);
-    Serial.print("Publish message: ");
+    Serial.print(serial_mqtt_publish_msg);
     Serial.println(msg);
     client.publish("outTopic", msg);
   }
