@@ -54,9 +54,9 @@ void setup()
 //  Serial.println("IP address: ");
 //  Serial.println(WiFi.localIP());
 
-  Serial.println("Starting UDP");
+  Serial.println(serial_ntp_starting_udp);
   udp.begin(localPort);
-  Serial.print("Local port: ");
+  Serial.print(serial_ntp_starting_udp);
   Serial.println(udp.localPort());
 }
 
@@ -71,10 +71,10 @@ void loop()
   
   int cb = udp.parsePacket();
   if (!cb) {
-    Serial.println("no packet yet");
+    Serial.println(serial_ntp_no_packet_yet);
   }
   else {
-    Serial.print("packet received, length=");
+    Serial.print(serial_ntp_packet_rec_len);
     Serial.println(cb);
     // We've received a packet, read the data from it
     udp.read(packetBuffer, NTP_PACKET_SIZE); // read the packet into the buffer
@@ -87,11 +87,11 @@ void loop()
     // combine the four bytes (two words) into a long integer
     // this is NTP time (seconds since Jan 1 1900):
     unsigned long secsSince1900 = highWord << 16 | lowWord;
-    Serial.print("Seconds since Jan 1 1900 = " );
+    Serial.print(serial_ntp_sec_since);
     Serial.println(secsSince1900);
 
     // now convert NTP time into everyday time:
-    Serial.print("Unix time = ");
+    Serial.print(serial_ntp_unix_time);
     // Unix time starts on Jan 1 1970. In seconds, that's 2208988800:
     const unsigned long seventyYears = 2208988800UL;
     // subtract seventy years:
@@ -101,18 +101,18 @@ void loop()
 
 
     // print the hour, minute and second:
-    Serial.print("The UTC time is ");       // UTC is the time at Greenwich Meridian (GMT)
+    Serial.print(serial_ntp_utc_time);       // UTC is the time at Greenwich Meridian (GMT)
     Serial.print((epoch  % 86400L) / 3600); // print the hour (86400 equals secs per day)
-    Serial.print(':');
+    Serial.print(serial_ntp_colon);
     if ( ((epoch % 3600) / 60) < 10 ) {
       // In the first 10 minutes of each hour, we'll want a leading '0'
-      Serial.print('0');
+      Serial.print(serial_ntp_padding);
     }
     Serial.print((epoch  % 3600) / 60); // print the minute (3600 equals secs per minute)
-    Serial.print(':');
+    Serial.print(serial_ntp_colon);
     if ( (epoch % 60) < 10 ) {
       // In the first 10 seconds of each minute, we'll want a leading '0'
-      Serial.print('0');
+      Serial.print(serial_ntp_padding);
     }
     Serial.println(epoch % 60); // print the second
   }
@@ -123,7 +123,7 @@ void loop()
 // send an NTP request to the time server at the given address
 unsigned long sendNTPpacket(IPAddress& address)
 {
-  Serial.println("sending NTP packet...");
+  Serial.println(serial_ntp_sending_packet);
   // set all bytes in the buffer to 0
   memset(packetBuffer, 0, NTP_PACKET_SIZE);
   // Initialize values needed to form NTP request
