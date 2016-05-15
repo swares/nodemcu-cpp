@@ -1,10 +1,4 @@
-# Code for the DHT22 Humidity / Temprature #include <DHT22.h>
-// Only used for sprintf
-#include <stdio.h>
-
-// Data wire is plugged into port 7 on the Arduino
-// Connect a 4.7K resistor between VCC and the data pin (strong pullup)
-#define DHT22_PIN 7
+//# Code for the DHT22 Humidity / Temprature #include <DHT22.h>
 
 // Setup a DHT22 instance
 DHT22 myDHT22(DHT22_PIN);
