@@ -32,13 +32,13 @@
 // - See more at: http://www.esp8266.com/viewtopic.php?f=6&t=4348#sthash.59oBHYJ1.dpuf
 
 // base functions and outputs
-#define enable_rtc;
-#define enable_sdcard;
-#define enable_wifi;
 //# turn on and off output channels below
 #define output_serial;
-#if defined(enable_wifi);
-  #define enable_ntp;
+#define enable_rtc;
+#define enable_sdcard;
+#define enable_client_wifi;
+#if defined(enable_client_wifi);
+  #define enable_client_ntp;
   //# turn on and off output channels below
   #define output_webserver;
   #define output_mqtt;
@@ -49,6 +49,18 @@
 
 //# logging - output all debugging output to sdcard
 //#define output_sdcard_debug_log;
+
+//# base parameters below
+#if defined(enable_client_wifi)
+  #include <ESP8266WiFi.h>
+
+  const char* ssid     = "your-ssid";
+  const char* ap_pass = "your-user";
+  const char* ap_user = "your-password";
+#endif
+#if defined(enable_client_ntp)
+  const char* ntp_server = "10.136.151.102";
+#endif
 
 //# Enable Sensor Group
 #define station01;
