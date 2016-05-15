@@ -69,6 +69,19 @@
   const char* ntp_server = "10.136.151.102";
 #endif
 
+
+#if defined(enable_client_mqtt)
+  const char* mqtt_server = "broker.mqtt-dashboard.com";
+  #ifndef LIB_ESP8266WiFi
+    #define LIB_ESP8266WiFi
+    #include <ESP8266WiFi.h>
+  #endif
+  #ifndef LIB_PubSubClient
+    #define LIB_PubSubClient
+    #include <PubSubClient.h>
+  #endif
+#endif
+
 //# Enable Sensor Group
 #define station01;
 //#define station02;
