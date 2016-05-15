@@ -19,15 +19,6 @@
   - Select your ESP8266 in "Tools -> Board"
 */
 
-#include <ESP8266WiFi.h>
-#include <PubSubClient.h>
-
-// Update these with values suitable for your network.
-
-const char* ssid = "........";
-const char* password = "........";
-const char* mqtt_server = "broker.mqtt-dashboard.com";
-
 WiFiClient espClient;
 PubSubClient client(espClient);
 long lastMsg = 0;
