@@ -98,3 +98,7 @@
   #endif
 #endif
 
+// load mqtt messages if output_mqtt is defined
+#if defined(output_mqtt)
+
+#endif
