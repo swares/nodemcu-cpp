@@ -84,8 +84,8 @@ void setup()
 {
   
   Serial.begin(115200);
-  Serial.println("Playing With Fusion: AS3935 Lightning Sensor, SEN-39001-R01");
-  Serial.println("beginning boot procedure....");
+  Serial.println(serial_as3935_title);
+  Serial.println(serial_as3935_boot);
   
   // setup for the the I2C library: (enable pullups, set speed to 400kHz)
   I2c.begin();
@@ -123,32 +123,32 @@ void loop()
   uint8_t int_src = lightning0.AS3935_GetInterruptSrc();
   if(0 == int_src)
   {
-    Serial.println("interrupt source result not expected");
+    Serial.println(serial_as3935_sensor_int_src_why);
   }
   else if(1 == int_src)
   {
     uint8_t lightning_dist_km = lightning0.AS3935_GetLightningDistKm();
-    Serial.print("Lightning detected! Distance to strike: ");
+    Serial.print(serial_as3935_detected);
     Serial.print(lightning_dist_km);
-    Serial.println(" kilometers");
+    Serial.println(serial_as3935_km);
 
     uint8_t lightning_dist_mi = lightning_dist_km * 0.621;
     Serial.print(lightning_dist_mi);
-    Serial.println(" miles");
+    Serial.println(serial_as3935_mi);
 
     uint8_t lightning_energy = lightning0.AS3935_GetStrikeEnergyRaw();
-    Serial.print("Lightning detected! Strike Energy: ");
+    Serial.print(serial_as3935_energy);
     Serial.print(lightning_energy);
-    Serial.println(" raw");
+    Serial.println(serial_as3935_raw);
 
   }
   else if(2 == int_src)
   {
-    Serial.println("Disturber detected");
+    Serial.println(serial_as3935_sensor_disturber);
   }
   else if(3 == int_src)
   {
-    Serial.println("Noise level too high");
+    Serial.println(serial_as3935_sensor_noisy);
   }
   lightning0.AS3935_PrintAllRegs(); // for debug...
 }
