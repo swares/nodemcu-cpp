@@ -1,9 +1,4 @@
-//# File to determine inputs / outputs
-
-//# turn on and off output channels
-#define output_serial;
-#define output_webserver;
-#define output_mqtt;
+//# File to provide output text for serial, webserver, mqtt. 
 
 //# Use Arduino AJAX Web Server with pages saved on sdcard or eeprom or program mem.
 //# - Javascript, AJAX, Images, Links, CSS.
