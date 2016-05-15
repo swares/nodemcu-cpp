@@ -6,7 +6,6 @@ DHT22 myDHT22(DHT22_PIN);
 void setup(void)
 {
   // start serial port
-  Serial.begin(9600);
   Serial.println(serial_dht22_title);
 }
 
