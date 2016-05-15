@@ -9,6 +9,18 @@
   // serial headers
   const char serial_header[] PROGMEM  = { "Environmental Monitoring Station - Index" };
   const char serial_error[] PROGMEM  = { "Environmental Monitoring Station - Error" };
+  // load serial messages if enable_wifi is defined
+  #if defined(enable_wifi)
+    const char serial_wifi_title[] PROGMEM  = {"Connecting to "};
+    const char serial_wifi_waiting[] PROGMEM  = {"."};
+    const char serial_wifi_connected[] PROGMEM  = {"WiFi connected"};  
+    const char serial_wifi_ip_address[] PROGMEM  = {"IP address: "};
+    const char serial_wifi_connecting[] PROGMEM  = {"connecting to "};
+    const char serial_wifi_connection_failed[] PROGMEM  = {"connection failed"};
+    const char serial_wifi_rerquesting_url0[] PROGMEM  = {"Requesting URL: "};
+    const char serial_wifi_client_timeout[] PROGMEM  = {">>> Client Timeout !"};
+    const char serial_wifi_closing[] PROGMEM  = {"closing connection"};
+  #endif
   // load serial messages if enable_bmp180 is defined
   #if defined(enable_bmp180)
     const char serial_bmp180_sensor[] PROGMEM  = { "Sensor:       " };
@@ -71,6 +83,11 @@
   // html index and error pages
   const char web_index[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Index</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
   const char web_error[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Error</title></head><body><h1>Environmental Monitoring Station - Error</h1><p id='error_txt'>Some Error Occured</p></body></html>" };
+
+  #if defined(enable_wifi)
+
+  #endif
+
   // load web pages if enable_switches is defined
   #if defined(enable_switches)
     const char web_switches[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Switches</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station - Switches</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
@@ -96,6 +113,11 @@
 // load mqtt messages if output_mqtt is defined
 #if defined(output_mqtt)
   // load mqtt messages
+
+  #if defined(enable_wifi)
+
+  #endif
+
 
   // load mqtt message if enable_switches is defined
   #if defined(enable_switches)
