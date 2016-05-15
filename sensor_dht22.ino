@@ -7,7 +7,7 @@ void setup(void)
 {
   // start serial port
   Serial.begin(9600);
-  Serial.println("DHT22 Library Demo");
+  Serial.println(serial_dht22_title);
 }
 
 void loop(void)
@@ -18,16 +18,16 @@ void loop(void)
   // 2s warm-up after power-on.
   delay(2000);
   
-  Serial.print("Requesting data...");
+  Serial.print(serial_dht22_req_data);
   errorCode = myDHT22.readData();
   switch(errorCode)
   {
     case DHT_ERROR_NONE:
-      Serial.print("Got Data ");
+      Serial.print(serial_dht22_got_data);
       Serial.print(myDHT22.getTemperatureC());
-      Serial.print("C ");
+      Serial.print(serial_dht22_c);
       Serial.print(myDHT22.getHumidity());
-      Serial.println("%");
+      Serial.println(serial_dht22_percent);
       // Alternately, with integer formatting which is clumsier but more compact to store and
 	  // can be compared reliably for equality:
 	  //	  
@@ -38,29 +38,29 @@ void loop(void)
       Serial.println(buf);
       break;
     case DHT_ERROR_CHECKSUM:
-      Serial.print("check sum error ");
+      Serial.print(serial_dht22_sensor_checksum);
       Serial.print(myDHT22.getTemperatureC());
-      Serial.print("C ");
+      Serial.print(serial_dht22_c);
       Serial.print(myDHT22.getHumidity());
-      Serial.println("%");
+      Serial.println(serial_dht22_percent);
       break;
     case DHT_BUS_HUNG:
-      Serial.println("BUS Hung ");
+      Serial.println(serial_dht22_sensor_buss_hung);
       break;
     case DHT_ERROR_NOT_PRESENT:
-      Serial.println("Not Present ");
+      Serial.println(serial_dht22_sensor_none);
       break;
     case DHT_ERROR_ACK_TOO_LONG:
-      Serial.println("ACK time out ");
+      Serial.println(serial_dht22_sensor_ack_timeout);
       break;
     case DHT_ERROR_SYNC_TIMEOUT:
-      Serial.println("Sync Timeout ");
+      Serial.println(serial_dht22_sensor_sync_timeout);
       break;
     case DHT_ERROR_DATA_TIMEOUT:
-      Serial.println("Data Timeout ");
+      Serial.println(serial_dht22_sensor_data_timeout);
       break;
     case DHT_ERROR_TOOQUICK:
-      Serial.println("Polled to quick ");
+      Serial.println(serial_dht22_sensor_poll_too_quick);
       break;
   }
 }
