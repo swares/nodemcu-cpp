@@ -21,6 +21,15 @@
     const char serial_wifi_client_timeout[] PROGMEM  = {">>> Client Timeout !"};
     const char serial_wifi_closing[] PROGMEM  = {"closing connection"};
   #endif
+  #if defined(enable_mqtt)
+    const char serial_mqtt_msg_arrived[] PROGMEM  = {"Message arrived ["};
+    const char serial_mqtt_spacer[] PROGMEM  = {"] "};
+    const char serial_mqtt_connecting[] PROGMEM  = {"Attempting MQTT connection..."};
+    const char serial_mqtt_connected[] PROGMEM  = {"connected"};
+    const char serial_mqtt_failed[] PROGMEM  = {"failed, rc="};
+    const char serial_mqtt_trying_again[] PROGMEM  = {" try again in 5 seconds"};
+    const char serial_mqtt_publish_msg[] PROGMEM  = {"Publish message: "};
+  #endif
   #if defined(enable_ntp)
     const char serial_ntp_starting_udp[] PROGMEM  = {"Starting UDP"};
     const char serial_ntp_local_port[] PROGMEM  = {"Local port: "};
@@ -102,6 +111,9 @@
   #if defined(enable_ntp)
 
   #endif
+  #if defined(enable_mqtt)
+
+  #endif
 
   // load web pages if enable_switches is defined
   #if defined(enable_switches)
@@ -133,6 +145,9 @@
 
   #endif
   #if defined(enable_ntp)
+
+  #endif
+  #if defined(enable_mqtt)
 
   #endif
 
