@@ -23,7 +23,7 @@
     const char serial_bmp180_min_val_hpa[] PROGMEM  = { "Min Value - hPa:    " };
     const char serial_bmp180_res_hpa[] PROGMEM  = { "Resolution - hPa:" };   
     const char serial_bmp180_devider[] PROGMEM  = { "------------------------------------" };
-    const char serial_bmp180_test[] PROGMEM  = { "Pressure Sensor Test" }; 
+    const char serial_bmp180_title[] PROGMEM  = { "Pressure Sensor Test" }; 
     const char serial_bmp180_pressure_hpa[] PROGMEM  = { "Pressure - hPa:    " };
     const char serial_bmp180_temp_c[] PROGMEM  = { "Temperature - C:" };
     const char serial_bmp180_altitude_m[] PROGMEM  = { "Altitude - m:    " }; 
@@ -31,7 +31,7 @@
     const char serial_bmp180_sensor_none[] PROGMEM  = { "Ooops, no BMP085 or BMP185 detected ... Check your wiring or I2C ADDR!" };
   #endif
   #if defined(enable_dht22)
-    const char serial_dht22_demo[] PROGMEM  = {"DHT22 Library Demo"};
+    const char serial_dht22_title[] PROGMEM  = {"DHT22 Library Demo"};
     const char serial_dht22_req_data[] PROGMEM  = {"Requesting data..."};
     const char serial_dht22_got_data[] PROGMEM  = {"Got Data "};
     const char serial_dht22_c[] PROGMEM  = {"C "};
@@ -46,7 +46,7 @@
     const char serial_dht22_sensor_poll_too_quick[] PROGMEM  = {"Polled to quick "};
   #endif
   #if defined(enable_as3935)
-    const char serial_as3935_demo[] PROGMEM  = {"Playing With Fusion: AS3935 Lightning Sensor, SEN-39001-R01"};
+    const char serial_as3935_title[] PROGMEM  = {"Playing With Fusion: AS3935 Lightning Sensor, SEN-39001-R01"};
     const char serial_as3935_boot[] PROGMEM  = {"beginning boot procedure...."};
     const char serial_as3935_sensor_int_src_why[] PROGMEM  = {"interrupt source result not expected"};
     const char serial_as3935_detected[] PROGMEM  = {"Lightning detected! Distance to strike: "};
@@ -57,7 +57,15 @@
     const char serial_as3935_sensor_disturber[] PROGMEM  = {"Disturber detected"};
     const char serial_as3935_sensor_noisy[] PROGMEM  = {"Noise level too high"};
   #endif
+  #if defined(enable_switches)
+    const char serial_switches_title[] PROGMEM  = {"Switches"};
+    const char serial_switches_switch[] PROGMEM  = {"Switch"};
+    const char serial_switches_status[] PROGMEM  = {"Status"};
+  #endif
+  #if defined(enable_ds3231_at24c32)
+    const char serial_ds3231_at24c32_title[] PROGMEM  = {"DS3231 RTC + AT24C32 4kb EEPROM"};
 
+  #endif
 #endif
 
 // load web pages if output_webserver is defined
@@ -70,7 +78,7 @@
   const char web_error[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Error</title></head><body><h1>Environmental Monitoring Station - Error</h1><p id='error_txt'>Some Error Occured</p></body></html>" };
   // load web pages if enable_switches is defined
   #if defined(enable_switches)
-    const char web_index[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Switches</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station - Switches</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
+    const char web_switches[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Switches</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station - Switches</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
   #endif
   // load web pages if enable_bmp180 is defined
   #if defined(enable_bmp180)
