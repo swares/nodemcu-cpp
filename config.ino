@@ -65,8 +65,18 @@
   const char* ap_pass = "your-user";
   const char* ap_user = "your-password";
 #endif
+
 #if defined(enable_client_ntp)
   const char* ntp_server = "10.136.151.102";
+  unsigned int localPort = 2390;      // local port to listen for UDP packets
+  #ifndef LIB_ESP8266WiFi
+    #define LIB_ESP8266WiFi
+    #include <ESP8266WiFi.h>
+  #endif
+  #ifndef LIB_WiFiUdp
+    #define LIB_WiFiUdp
+    #include <WiFiUdp.h>
+  #endif
 #endif
 
 
