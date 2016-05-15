@@ -34,6 +34,10 @@
 // base functions and outputs
 //# turn on and off output channels below
 #define output_serial;
+#if defined(output_serial);
+  SERIAL0_BAUD=115200
+  Serial.begin(SERIAL0_BAUD);
+#endif
 #define enable_rtc;
 #define enable_sdcard;
 #define enable_client_wifi;
