@@ -13,8 +13,7 @@ SoftwareSerial esp8266(2,3); // make RX Arduino line is pin 2, make TX Arduino l
                              // and the RX line from the esp to the Arduino's pin 3
 void setup()
 {
-  Serial.begin(9600);
-  esp8266.begin(9600); // your esp's baud rate might be different
+  esp8266.begin(ESP8266_BAUD); // your esp's baud rate might be different
   
  
   
