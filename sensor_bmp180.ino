@@ -55,7 +55,6 @@ void displaySensorDetails(void)
 /**************************************************************************/
 void setup(void) 
 {
-  Serial.begin(9600);
   Serial.println(serial_bmp180_title); Serial.println("");
   
   /* Initialise the sensor */
