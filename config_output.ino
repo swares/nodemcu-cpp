@@ -21,6 +21,18 @@
     const char serial_wifi_client_timeout[] PROGMEM  = {">>> Client Timeout !"};
     const char serial_wifi_closing[] PROGMEM  = {"closing connection"};
   #endif
+  #if defined(enable_ntp)
+    const char serial_ntp_starting_udp[] PROGMEM  = {"Starting UDP"};
+    const char serial_ntp_local_port[] PROGMEM  = {"Local port: "};
+    const char serial_ntp_no_packet_yet[] PROGMEM  = {"no packet yet"};
+    const char serial_ntp_packet_rec_len[] PROGMEM  = {"packet received, length="};
+    const char serial_ntp_sec_since[] PROGMEM  = {"Seconds since Jan 1 1900 = " };
+    const char serial_ntp_unix_time[] PROGMEM  = {"Unix time = "};
+    const char serial_ntp_utc_time[] PROGMEM  = {"The UTC time is "};       // UTC is the time at Greenwich Meridian {GMT}
+    const char serial_ntp_colon[] PROGMEM  = {':'};
+    const char serial_ntp_padding[] PROGMEM  = {'0'};
+    const char serial_ntp_sending_packet[] PROGMEM  = {"sending NTP packet..."};
+  #endif
   // load serial messages if enable_bmp180 is defined
   #if defined(enable_bmp180)
     const char serial_bmp180_sensor[] PROGMEM  = { "Sensor:       " };
@@ -87,6 +99,9 @@
   #if defined(enable_wifi)
 
   #endif
+  #if defined(enable_ntp)
+
+  #endif
 
   // load web pages if enable_switches is defined
   #if defined(enable_switches)
@@ -117,6 +132,10 @@
   #if defined(enable_wifi)
 
   #endif
+  #if defined(enable_ntp)
+
+  #endif
+
 
 
   // load mqtt message if enable_switches is defined
