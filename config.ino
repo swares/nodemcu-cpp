@@ -42,6 +42,8 @@
 //#define station02;
 //#define station03;
 //#define station04;
+
+//# Sensor Groups
 #if defined(station01)
   #define enable_switches;
   #define enable_bmp180;
@@ -60,7 +62,6 @@
 #endif
 
 //# sensor parameters below
-
 // if defined load params for the BMP180 sensor
 #if defined(enable_bmp180)
   #ifndef LIB_Wire
@@ -87,7 +88,6 @@
   // Connect a 4.7K resistor between VCC and the data pin (strong pullup)
   #define DHT22_PIN 7
 #endif
-
 
 // if defined load params for the as3935 lightning sensor
 #if defined(enable_as3935)
@@ -118,3 +118,8 @@
   #define AS3935_DIST_EN       1
 #endif
 // ------------------------------
+
+
+//#if defined(enable_)
+//
+//#endif
