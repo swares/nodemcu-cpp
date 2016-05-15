@@ -46,8 +46,6 @@ DS3231  rtc(SDA, SCL);
 
 void setup()
 {
-  // Setup Serial connection
-  Serial.begin(115200);
   // Uncomment the next line if you are using an Arduino Leonardo
   //while (!Serial) {}
   
