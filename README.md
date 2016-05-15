@@ -46,3 +46,9 @@ Layout
         config.ino - config parameters and libs
         config_output.ino - output and output message definitions
         
+        client_ntp.ino - ntp client
+        client_mqtt.ino - mqtt pubsubclient
+        client_wifi.ino - wifi client
+        server_httpd.ino - httpd server
+        rtc_ds3231.ino - rtc
+        
