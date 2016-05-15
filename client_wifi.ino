@@ -1,9 +1,6 @@
 # Place holder for WIFI networking code
 
 void setup() {
-  Serial.begin(115200);
-  delay(10);
-
   // We start by connecting to a WiFi network
 
   Serial.println();
