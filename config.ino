@@ -31,6 +31,19 @@
 // +---------------------+----------------+-----------------------+------------------------+------------------------+
 // - See more at: http://www.esp8266.com/viewtopic.php?f=6&t=4348#sthash.59oBHYJ1.dpuf
 
+// base functions and outputs
+#define enable_rtc;
+#define enable_sdcard;
+#define enable_wifi;
+//# turn on and off output channels below
+#define output_serial;
+#if defined(enable_wifi);
+  #define enable_ntp;
+  //# turn on and off output channels below
+  #define output_webserver;
+  #define output_mqtt;
+#endif
+
 //# turn on and off debugging
 //#define DEVMODE;
 
