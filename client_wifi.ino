@@ -5,19 +5,19 @@ void setup() {
 
   Serial.println();
   Serial.println();
-  Serial.print("Connecting to ");
+  Serial.print(serial_wifi_title);
   Serial.println(ssid);
   
   WiFi.begin(ssid, password);
   
   while (WiFi.status() != WL_CONNECTED) {
     delay(500);
-    Serial.print(".");
+    Serial.print(serial_wifi_waiting);
   }
 
   Serial.println("");
-  Serial.println("WiFi connected");  
-  Serial.println("IP address: ");
+  Serial.println(serial_wifi_connected);  
+  Serial.println(serial_wifi_ip_address);
   Serial.println(WiFi.localIP());
 }
 
@@ -27,14 +27,14 @@ void loop() {
   delay(5000);
   ++value;
 
-  Serial.print("connecting to ");
+  Serial.print(serial_wifi_connecting);
   Serial.println(host);
   
   // Use WiFiClient class to create TCP connections
   WiFiClient client;
   const int httpPort = 80;
   if (!client.connect(host, httpPort)) {
-    Serial.println("connection failed");
+    Serial.println(serial_wifi_connection_failed);
     return;
   }
   
@@ -46,7 +46,7 @@ void loop() {
   url += "&value=";
   url += value;
   
-  Serial.print("Requesting URL: ");
+  Serial.print(serial_wifi_rerquesting_url0);
   Serial.println(url);
   
   // This will send the request to the server
@@ -56,7 +56,7 @@ void loop() {
   unsigned long timeout = millis();
   while (client.available() == 0) {
     if (millis() - timeout > 5000) {
-      Serial.println(">>> Client Timeout !");
+      Serial.println(serial_wifi_client_timeout);
       client.stop();
       return;
     }
@@ -69,6 +69,6 @@ void loop() {
   }
   
   Serial.println();
-  Serial.println("closing connection");
+  Serial.println(serial_wifi_closing);
 }
 
