@@ -52,8 +52,10 @@
 
 //# base parameters below
 #if defined(enable_client_wifi)
-  #include <ESP8266WiFi.h>
-
+  #ifndef LIB_ESP8266WiFi
+    #define LIB_ESP8266WiFi
+    #include <ESP8266WiFi.h>
+  #endif
   const char* ssid     = "your-ssid";
   const char* ap_pass = "your-user";
   const char* ap_user = "your-password";
