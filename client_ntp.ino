@@ -26,22 +26,6 @@ WiFiUDP udp;
 
 void setup()
 {
-
-  // We start by connecting to a WiFi network
-//  Serial.print("Connecting to ");
-//  Serial.println(ssid);
-//  WiFi.begin(ssid, pass);
-  
-//  while (WiFi.status() != WL_CONNECTED) {
-//    delay(500);
-//    Serial.print(".");
-//  }
-//  Serial.println("");
-  
-//  Serial.println("WiFi connected");
-//  Serial.println("IP address: ");
-//  Serial.println(WiFi.localIP());
-
   #if defined(output_serial)
     Serial.println(serial_ntp_starting_udp);
   #endif
@@ -50,7 +34,6 @@ void setup()
     Serial.print(serial_ntp_starting_udp);
     Serial.println(udp.localPort());
   #endif
- 
 }
 
 void loop()
