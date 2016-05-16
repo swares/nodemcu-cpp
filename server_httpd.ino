@@ -96,7 +96,9 @@ String sendData(String command, const int timeout, boolean debug)
     
     if(debug)
     {
-      Serial.print(response);
+      #if defined(output_serial)
+        Serial.print(response);
+      #endif
     }
     
     return response;
