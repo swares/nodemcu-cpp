@@ -44,6 +44,15 @@ unsigned long, uint32_t 	              4 	  unsigned value in the range [0, 4294
 float, double 	                        4 	  floating point value in the range [-3.4028235e+38, 3.4028235e+38]
 
 NOTE: float and double are the same in this (Arduino) platform
+
+
+use stack instead of heap whenever possible - stack memory is preferred because the memory is complete freed 
+up when the function returns, and also the stack memory is fragmentation free. 
+In this means using local variables and avoid using dynamic memory allocation (i.e., malloc, calloc and realloc calls).
+
+when using strings is a must, then it is important to keep them as short as possible - remember, each single char takes
+one byte of RAM (the entire 2KB RAM memory of an ATmega328p can be occupied by a string with a length of 2048 chars). 
+
 */
 
 // base functions and outputs
