@@ -62,9 +62,9 @@ Layout
         int get_time_ntp()
         int get_time_rtc()
 
-        int sensor_bmp180_read()
-        int sensor_dht22_read()
+        int sensor_bmp180_read()  // 
+        int sensor_dht22_read()   // 
         int sensor_as3935_int()   // runs via intrerupt should be powered?
 
-        int publish_mqtt()
+        int publish_mqtt()        // send in: a channel string, a message string
         int start_httpd()         // using wake on lan to awake to service clients when sleeping
