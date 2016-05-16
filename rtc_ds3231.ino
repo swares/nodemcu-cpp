@@ -1,4 +1,4 @@
-# RTC DS3231
+//# RTC DS3231
 // DS3231_Serial_Easy
 // Copyright (C)2015 Rinky-Dink Electronics, Henning Karlsen. All right reserved
 // web: http://www.RinkyDinkElectronics.com/
@@ -60,17 +60,18 @@ void setup()
 
 void loop()
 {
-  // Send Day-of-Week
-  Serial.print(rtc.getDOWStr());
-  Serial.print(" ");
+  #if defined(output_serial)
+    // Send Day-of-Week
+    Serial.print(rtc.getDOWStr());
+    Serial.print(" ");
   
-  // Send date
-  Serial.print(rtc.getDateStr());
-  Serial.print(" -- ");
+    // Send date
+    Serial.print(rtc.getDateStr());
+    Serial.print(" -- ");
 
-  // Send time
-  Serial.println(rtc.getTimeStr());
-  
+    // Send time
+    Serial.println(rtc.getTimeStr());
+  #endif
   // Wait one second before repeating :)
   delay (1000);
 }
