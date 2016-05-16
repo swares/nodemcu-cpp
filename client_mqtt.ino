@@ -26,11 +26,15 @@ char msg[50];
 int value = 0;
 
 void callback(char* topic, byte* payload, unsigned int length) {
-  Serial.print(serial_mqtt_msg_arrived);
-  Serial.print(topic);
-  Serial.print(serial_mqtt_spacer);
+  #if defined(output_serial)
+    Serial.print(serial_mqtt_msg_arrived);
+    Serial.print(topic);
+    Serial.print(serial_mqtt_spacer);
+  #endif
   for (int i = 0; i < length; i++) {
-    Serial.print((char)payload[i]);
+    #if defined(output_serial)
+      Serial.print((char)payload[i]);
+    #endif
   }
   Serial.println();
 
@@ -48,18 +52,24 @@ void callback(char* topic, byte* payload, unsigned int length) {
 void reconnect() {
   // Loop until we're reconnected
   while (!client.connected()) {
-    Serial.print(serial_mqtt_connecting);
+    #if defined(output_serial)
+      Serial.print(serial_mqtt_connecting);
+    #endif
     // Attempt to connect
     if (client.connect(client.state())) {
-      Serial.println(serial_mqtt_connected);
+      #if defined(output_serial)
+        Serial.println(serial_mqtt_connected);
+      #endif
       // Once connected, publish an announcement...
       client.publish(mqtt_out_topic, mqtt_chan_anounce);
       // ... and resubscribe
       client.subscribe(mqtt_in_topic);
     } else {
-      Serial.print(serial_mqtt_failed);
-      Serial.print(client.state());
-      Serial.println(serial_mqtt_trying_again);
+      #if defined(output_serial)
+        Serial.print(serial_mqtt_failed);
+        Serial.print(client.state());
+        Serial.println(serial_mqtt_trying_again);
+      #endif
       // Wait 5 seconds before retrying
       delay(5000);
     }
@@ -85,8 +95,10 @@ void loop() {
     lastMsg = now;
     ++value;
     snprintf (msg, 75, "hello world #%ld", value);
-    Serial.print(serial_mqtt_publish_msg);
-    Serial.println(msg);
+    #if defined(output_serial)
+      Serial.print(serial_mqtt_publish_msg);
+      Serial.println(msg);
+    #endif
     client.publish(mqtt_out_topic, msg);
   }
 }
