@@ -1,4 +1,4 @@
-# Code for NTP Client
+//# Code for NTP Client
 /*
  Udp NTP Client
  Get the time from a Network Time Protocol (NTP) time server
@@ -18,9 +18,6 @@
  *  Lookup the IP address for the host name instead */
 //IPAddress timeServer(129, 6, 15, 28); // time.nist.gov NTP server
 IPAddress timeServerIP; // time.nist.gov NTP server address
-const char* ntpServerName = "time.nist.gov";
-
-const int NTP_PACKET_SIZE = 48; // NTP time stamp is in the first 48 bytes of the message
 
 byte packetBuffer[ NTP_PACKET_SIZE]; //buffer to hold incoming and outgoing packets
 
@@ -100,23 +97,21 @@ void loop()
     #if defined(output_serial)
       // print Unix time:
       Serial.println(epoch);
-
-
-    // print the hour, minute and second:
-    Serial.print(serial_ntp_utc_time);       // UTC is the time at Greenwich Meridian (GMT)
-    Serial.print((epoch  % 86400L) / 3600); // print the hour (86400 equals secs per day)
-    Serial.print(serial_ntp_colon);
-    if ( ((epoch % 3600) / 60) < 10 ) {
-      // In the first 10 minutes of each hour, we'll want a leading '0'
-      Serial.print(serial_ntp_padding);
-    }
-    Serial.print((epoch  % 3600) / 60); // print the minute (3600 equals secs per minute)
-    Serial.print(serial_ntp_colon);
-    if ( (epoch % 60) < 10 ) {
+      // print the hour, minute and second:
+      Serial.print(serial_ntp_utc_time);       // UTC is the time at Greenwich Meridian (GMT)
+      Serial.print((epoch  % 86400L) / 3600); // print the hour (86400 equals secs per day)
+      Serial.print(serial_ntp_colon);
+      if ( ((epoch % 3600) / 60) < 10 ) {
+        // In the first 10 minutes of each hour, we'll want a leading '0'
+        Serial.print(serial_ntp_padding);
+      }
+      Serial.print((epoch  % 3600) / 60); // print the minute (3600 equals secs per minute)
+      Serial.print(serial_ntp_colon);
+      if ( (epoch % 60) < 10 ) {
       // In the first 10 seconds of each minute, we'll want a leading '0'
       Serial.print(serial_ntp_padding);
-    }
-    Serial.println(epoch % 60); // print the second
+      }
+      Serial.println(epoch % 60); // print the second
     #endif
   }
   // wait ten seconds before asking for the time again
