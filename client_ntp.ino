@@ -24,7 +24,7 @@ byte packetBuffer[ NTP_PACKET_SIZE]; //buffer to hold incoming and outgoing pack
 // A UDP instance to let us send and receive packets over UDP
 WiFiUDP udp;
 
-void setup()
+int get_time_ntp()
 {
   #if defined(output_serial)
     Serial.println(serial_ntp_starting_udp);
@@ -34,10 +34,7 @@ void setup()
     Serial.print(serial_ntp_starting_udp);
     Serial.println(udp.localPort());
   #endif
-}
 
-void loop()
-{
   //get a random server from the pool
   WiFi.hostByName(ntpServerName, timeServerIP); 
 
@@ -97,8 +94,7 @@ void loop()
       Serial.println(epoch % 60); // print the second
     #endif
   }
-  // wait ten seconds before asking for the time again
-  delay(10000);
+ return 0; // double check this
 }
 
 // send an NTP request to the time server at the given address
