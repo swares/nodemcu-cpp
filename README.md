@@ -54,3 +54,7 @@ Layout
           client_mqtt.ino - mqtt pubsubclient
           server_httpd.ino - httpd server
         
+        Clients
+        clients return 1 or higher on success (true), 0 on failure (false)
+        
+        
