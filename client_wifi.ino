@@ -1,6 +1,6 @@
 //# Place holder for WIFI networking code
 
-int connect_to_ap() {
+int connect_to_wifi() {
   // We start by connecting to a WiFi network
   #if defined(output_serial)  
     Serial.println();
