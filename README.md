@@ -60,5 +60,11 @@ Layout
         Functions
         int connect_to_wifi()
         int get_time_ntp()
+        int get_time_rtc()
+
+        int sensor_bmp180_read()
+        int sensor_dht22_read()
+        int sensor_as3935_int()   // runs via intrerupt should be powered?
+
         int publish_mqtt()
-        
+        int start_httpd()         // using wake on lan to awake to service clients when sleeping
