@@ -44,6 +44,8 @@
 #if defined(enable_client_wifi);
   ESP8266_BAUD=115200;
   #define enable_client_ntp;
+  const char* ntpServerName = "time.nist.gov";
+  const int NTP_PACKET_SIZE = 48; // NTP time stamp is in the first 48 bytes of the message
   //# turn on and off output channels below
   #define output_webserver;
   #define output_mqtt;
