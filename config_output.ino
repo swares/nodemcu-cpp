@@ -20,28 +20,115 @@
     const char serial_wifi_rerquesting_url0[] PROGMEM  = {"Requesting URL: "};
     const char serial_wifi_client_timeout[] PROGMEM  = {">>> Client Timeout !"};
     const char serial_wifi_closing[] PROGMEM  = {"closing connection"};
+    
+    #if defined(enable_mqtt)
+      const char serial_mqtt_msg_arrived[] PROGMEM  = {"Message arrived ["};
+      const char serial_mqtt_spacer[] PROGMEM  = {"] "};
+      const char serial_mqtt_connecting[] PROGMEM  = {"Attempting MQTT connection..."};
+      const char serial_mqtt_connected[] PROGMEM  = {"connected"};
+      const char serial_mqtt_failed[] PROGMEM  = {"failed, rc="};
+      const char serial_mqtt_trying_again[] PROGMEM  = {" try again in 5 seconds"};
+      const char serial_mqtt_publish_msg[] PROGMEM  = {"Publish message: "};
+    #endif
+
+    #if defined(enable_ntp)
+      const char serial_ntp_starting_udp[] PROGMEM  = {"Starting UDP"};
+      const char serial_ntp_local_port[] PROGMEM  = {"Local port: "};
+      const char serial_ntp_no_packet_yet[] PROGMEM  = {"no packet yet"};
+      const char serial_ntp_packet_rec_len[] PROGMEM  = {"packet received, length="};
+      const char serial_ntp_sec_since[] PROGMEM  = {"Seconds since Jan 1 1900 = " };
+      const char serial_ntp_unix_time[] PROGMEM  = {"Unix time = "};
+      const char serial_ntp_utc_time[] PROGMEM  = {"The UTC time is "};       // UTC is the time at Greenwich Meridian {GMT}
+      const char serial_ntp_colon[] PROGMEM  = {':'};
+      const char serial_ntp_padding[] PROGMEM  = {'0'};
+      const char serial_ntp_sending_packet[] PROGMEM  = {"sending NTP packet..."};
+    #endif
+
+// load web pages if output_webserver is defined
+#if defined(output_webserver)
+  // http headers
+  const char web_http200[] PROGMEM  = { "HTTP/1.1 200 OK\nContent-Type: text/html\nConnection: keep-alive\n\n" };
+  const char web_http404[] PROGMEM  = { "HTTP/1.1 404 Error\nContent-Type: text/html\nConnection: keep-alive\n\n" };
+  // html index and error pages
+  const char web_index[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Index</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
+  const char web_error[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Error</title></head><body><h1>Environmental Monitoring Station - Error</h1><p id='error_txt'>Some Error Occured</p></body></html>" };
+
+  // -- load wifi messages if enable_wifi is defined
+  #if defined(enable_wifi)
+
+    // -- load mqtt messages if enable_ntp is defined
+    #if defined(enable_ntp)
+
+    #endif
+
+    // -- load mqtt messages if enable_mqtt is defined
+    #if defined(enable_mqtt)
+
+    #endif
+
+    // -- load web pages if enable_switches is defined
+    #if defined(enable_switches)
+      const char web_switches[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Switches</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station - Switches</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
+    #endif
+    // load web pages if enable_bmp180 is defined
+    #if defined(enable_bmp180)
+      const char web_bmp180[]  PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - BMP180</title><script>function Get_BMP180_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('bmp180_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_BMP180_State()', 1000);}</script></head><body onload='Get_BMP180_State()'><h1>Environmental Monitoring Station - BMP180</h1><p id='bmp180_txt'>State: Not requested...</p></body></html>" };
+    #endif
+    // load web pages if enable_dht22 is defined
+    #if defined(enable_dht22)
+      const char web_dht22[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - DHT22</title><script>function Get_DHT22_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('dht22_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_DHT22_State()', 1000);}</script></head><body onload='Get_DHT22_State()'><h1>Environmental Monitoring Station - DHT22</h1><p id='dht22_txt'>State: Not requested...</p></body></html>" };
+    #endif
+    // load web pages if enable_as3935 is defined
+    #if defined(enable_as3935)
+      const char web_as3935[]  PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - AS3935</title><script>function Get_AS3935_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('as3935_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_AS3935_State()', 1000);}</script></head><body onload='Get_AS3935_State()'><h1>Environmental Monitoring Station - AS3935</h1><p id='as3935_txt'>State: Not requested...</p></body></html>" };
+    #endif
+    // load web pages if enable_ds3231_at24c32 is defined
+    #if defined(enable_ds3231_at24c32)
+      const char web_ds3231_at24c32[] PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - DS3231_AT24C32</title><script>function Get_DS3231_AT24C32_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('ds3231_at24c32_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_DS3231_AT24C32_State()', 1000);}</script></head><body onload='Get_DS3231_AT24C32_State()'><h1>Environmental Monitoring Station - DS3231_AT24C32</h1><p id='ds3231_at24c32_txt'>State: Not requested...</p></body></html>" };
+    #endif
   #endif
-  #if defined(enable_mqtt)
-    const char serial_mqtt_msg_arrived[] PROGMEM  = {"Message arrived ["};
-    const char serial_mqtt_spacer[] PROGMEM  = {"] "};
-    const char serial_mqtt_connecting[] PROGMEM  = {"Attempting MQTT connection..."};
-    const char serial_mqtt_connected[] PROGMEM  = {"connected"};
-    const char serial_mqtt_failed[] PROGMEM  = {"failed, rc="};
-    const char serial_mqtt_trying_again[] PROGMEM  = {" try again in 5 seconds"};
-    const char serial_mqtt_publish_msg[] PROGMEM  = {"Publish message: "};
+
+// -- load mqtt messages if output_mqtt is defined
+#if defined(output_mqtt)
+  // load mqtt messages
+  const char mqtt_out_topic[] PROGMEM  = {"outTopic"} 
+  const char mqtt_chan_anounce[] PROGMEM  = {"hello world"} 
+  const char mqtt_in_topic[] PROGMEM  = {"inTopic"}
+
+  #if defined(enable_wifi)
+
   #endif
   #if defined(enable_ntp)
-    const char serial_ntp_starting_udp[] PROGMEM  = {"Starting UDP"};
-    const char serial_ntp_local_port[] PROGMEM  = {"Local port: "};
-    const char serial_ntp_no_packet_yet[] PROGMEM  = {"no packet yet"};
-    const char serial_ntp_packet_rec_len[] PROGMEM  = {"packet received, length="};
-    const char serial_ntp_sec_since[] PROGMEM  = {"Seconds since Jan 1 1900 = " };
-    const char serial_ntp_unix_time[] PROGMEM  = {"Unix time = "};
-    const char serial_ntp_utc_time[] PROGMEM  = {"The UTC time is "};       // UTC is the time at Greenwich Meridian {GMT}
-    const char serial_ntp_colon[] PROGMEM  = {':'};
-    const char serial_ntp_padding[] PROGMEM  = {'0'};
-    const char serial_ntp_sending_packet[] PROGMEM  = {"sending NTP packet..."};
+
   #endif
+  #if defined(enable_mqtt)
+
+  #endif
+
+  // load mqtt message if enable_switches is defined
+  #if defined(enable_switches)
+//    const char web_switches[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Switches</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station - Switches</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
+  #endif
+  // load mqtt message if enable_bmp180 is defined
+  #if defined(enable_bmp180)
+//    const char web_bmp180[]  PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - BMP180</title><script>function Get_BMP180_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('bmp180_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_BMP180_State()', 1000);}</script></head><body onload='Get_BMP180_State()'><h1>Environmental Monitoring Station - BMP180</h1><p id='bmp180_txt'>State: Not requested...</p></body></html>" };
+  #endif
+  // load mqtt message if enable_dht22 is defined
+  #if defined(enable_dht22)
+//    const char web_dht22[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - DHT22</title><script>function Get_DHT22_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('dht22_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_DHT22_State()', 1000);}</script></head><body onload='Get_DHT22_State()'><h1>Environmental Monitoring Station - DHT22</h1><p id='dht22_txt'>State: Not requested...</p></body></html>" };
+  #endif
+  // load mqtt message if enable_as3935 is defined
+  #if defined(enable_as3935)
+//    const char web_as3935[]  PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - AS3935</title><script>function Get_AS3935_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('as3935_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_AS3935_State()', 1000);}</script></head><body onload='Get_AS3935_State()'><h1>Environmental Monitoring Station - AS3935</h1><p id='as3935_txt'>State: Not requested...</p></body></html>" };
+  #endif
+  // load mqtt message if enable_ds3231_at24c32 is defined
+  #if defined(enable_ds3231_at24c32)
+//    const char web_ds3231_at24c32[] PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - DS3231_AT24C32</title><script>function Get_DS3231_AT24C32_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('ds3231_at24c32_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_DS3231_AT24C32_State()', 1000);}</script></head><body onload='Get_DS3231_AT24C32_State()'><h1>Environmental Monitoring Station - DS3231_AT24C32</h1><p id='ds3231_at24c32_txt'>State: Not requested...</p></body></html>" };
+  #endif
+#endif
+
+ #endif
+
   // load serial messages if enable_bmp180 is defined
   #if defined(enable_bmp180)
     const char serial_bmp180_sensor[] PROGMEM  = { "Sensor:       " };
@@ -96,84 +183,4 @@
   #endif
 #endif
 
-// load web pages if output_webserver is defined
-#if defined(output_webserver)
-  // http headers
-  const char web_http200[] PROGMEM  = { "HTTP/1.1 200 OK\nContent-Type: text/html\nConnection: keep-alive\n\n" };
-  const char web_http404[] PROGMEM  = { "HTTP/1.1 404 Error\nContent-Type: text/html\nConnection: keep-alive\n\n" };
-  // html index and error pages
-  const char web_index[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Index</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
-  const char web_error[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Error</title></head><body><h1>Environmental Monitoring Station - Error</h1><p id='error_txt'>Some Error Occured</p></body></html>" };
 
-  #if defined(enable_wifi)
-
-  #endif
-  #if defined(enable_ntp)
-
-  #endif
-  #if defined(enable_mqtt)
-
-  #endif
-
-  // load web pages if enable_switches is defined
-  #if defined(enable_switches)
-    const char web_switches[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Switches</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station - Switches</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
-  #endif
-  // load web pages if enable_bmp180 is defined
-  #if defined(enable_bmp180)
-    const char web_bmp180[]  PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - BMP180</title><script>function Get_BMP180_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('bmp180_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_BMP180_State()', 1000);}</script></head><body onload='Get_BMP180_State()'><h1>Environmental Monitoring Station - BMP180</h1><p id='bmp180_txt'>State: Not requested...</p></body></html>" };
-  #endif
-  // load web pages if enable_dht22 is defined
-  #if defined(enable_dht22)
-    const char web_dht22[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - DHT22</title><script>function Get_DHT22_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('dht22_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_DHT22_State()', 1000);}</script></head><body onload='Get_DHT22_State()'><h1>Environmental Monitoring Station - DHT22</h1><p id='dht22_txt'>State: Not requested...</p></body></html>" };
-  #endif
-  // load web pages if enable_as3935 is defined
-  #if defined(enable_as3935)
-    const char web_as3935[]  PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - AS3935</title><script>function Get_AS3935_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('as3935_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_AS3935_State()', 1000);}</script></head><body onload='Get_AS3935_State()'><h1>Environmental Monitoring Station - AS3935</h1><p id='as3935_txt'>State: Not requested...</p></body></html>" };
-  #endif
-  // load web pages if enable_ds3231_at24c32 is defined
-  #if defined(enable_ds3231_at24c32)
-    const char web_ds3231_at24c32[] PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - DS3231_AT24C32</title><script>function Get_DS3231_AT24C32_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('ds3231_at24c32_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_DS3231_AT24C32_State()', 1000);}</script></head><body onload='Get_DS3231_AT24C32_State()'><h1>Environmental Monitoring Station - DS3231_AT24C32</h1><p id='ds3231_at24c32_txt'>State: Not requested...</p></body></html>" };
-  #endif
-#endif
-
-// load mqtt messages if output_mqtt is defined
-#if defined(output_mqtt)
-  // load mqtt messages
-  const char mqtt_out_topic[] PROGMEM  = {"outTopic"} 
-  const char mqtt_chan_anounce[] PROGMEM  = {"hello world"} 
-  const char mqtt_in_topic[] PROGMEM  = {"inTopic"}
-
-  #if defined(enable_wifi)
-
-  #endif
-  #if defined(enable_ntp)
-
-  #endif
-  #if defined(enable_mqtt)
-
-  #endif
-
-
-
-  // load mqtt message if enable_switches is defined
-  #if defined(enable_switches)
-//    const char web_switches[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - Switches</title><script>function GetSwitchState() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('switch_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('GetSwitchState()', 1000);}</script></head><body onload='GetSwitchState()'><h1>Environmental Monitoring Station - Switches</h1><p id='switch_txt'>Switch state: Not requested...</p></body></html>" };
-  #endif
-  // load mqtt message if enable_bmp180 is defined
-  #if defined(enable_bmp180)
-//    const char web_bmp180[]  PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - BMP180</title><script>function Get_BMP180_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('bmp180_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_BMP180_State()', 1000);}</script></head><body onload='Get_BMP180_State()'><h1>Environmental Monitoring Station - BMP180</h1><p id='bmp180_txt'>State: Not requested...</p></body></html>" };
-  #endif
-  // load mqtt message if enable_dht22 is defined
-  #if defined(enable_dht22)
-//    const char web_dht22[]   PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - DHT22</title><script>function Get_DHT22_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('dht22_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_DHT22_State()', 1000);}</script></head><body onload='Get_DHT22_State()'><h1>Environmental Monitoring Station - DHT22</h1><p id='dht22_txt'>State: Not requested...</p></body></html>" };
-  #endif
-  // load mqtt message if enable_as3935 is defined
-  #if defined(enable_as3935)
-//    const char web_as3935[]  PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - AS3935</title><script>function Get_AS3935_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('as3935_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_AS3935_State()', 1000);}</script></head><body onload='Get_AS3935_State()'><h1>Environmental Monitoring Station - AS3935</h1><p id='as3935_txt'>State: Not requested...</p></body></html>" };
-  #endif
-  // load mqtt message if enable_ds3231_at24c32 is defined
-  #if defined(enable_ds3231_at24c32)
-//    const char web_ds3231_at24c32[] PROGMEM  = { "<!DOCTYPE html><html><head><title>Environmental Monitoring Station - DS3231_AT24C32</title><script>function Get_DS3231_AT24C32_State() {nocache = '&nocache=' + Math.random() * 1000000;var request = new XMLHttpRequest();request.onreadystatechange = function() {if (this.readyState == 4) {if (this.status == 200) {if (this.responseText != null) {document.getElementById('ds3231_at24c32_txt'.innerHTML = this.responseText;}}}};request.open('GET', 'ajax_switch' + nocache, true);request.send(null);setTimeout('Get_DS3231_AT24C32_State()', 1000);}</script></head><body onload='Get_DS3231_AT24C32_State()'><h1>Environmental Monitoring Station - DS3231_AT24C32</h1><p id='ds3231_at24c32_txt'>State: Not requested...</p></body></html>" };
-  #endif
-#endif
