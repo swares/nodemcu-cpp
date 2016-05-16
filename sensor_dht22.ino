@@ -5,8 +5,9 @@ DHT22 myDHT22(DHT22_PIN);
 
 void setup(void)
 {
-  // start serial port
-  Serial.println(serial_dht22_title);
+  #if defined(output_serial)
+    Serial.println(serial_dht22_title);
+  #endif
 }
 
 void loop(void)
@@ -17,16 +18,20 @@ void loop(void)
   // 2s warm-up after power-on.
   delay(2000);
   
-  Serial.print(serial_dht22_req_data);
+  #if defined(output_serial)
+    Serial.print(serial_dht22_req_data);
+  #endif
   errorCode = myDHT22.readData();
   switch(errorCode)
   {
     case DHT_ERROR_NONE:
-      Serial.print(serial_dht22_got_data);
-      Serial.print(myDHT22.getTemperatureC());
-      Serial.print(serial_dht22_c);
-      Serial.print(myDHT22.getHumidity());
-      Serial.println(serial_dht22_percent);
+      #if defined(output_serial)
+        Serial.print(serial_dht22_got_data);
+        Serial.print(myDHT22.getTemperatureC());
+        Serial.print(serial_dht22_c);
+        Serial.print(myDHT22.getHumidity());
+        Serial.println(serial_dht22_percent);
+      #endif
       // Alternately, with integer formatting which is clumsier but more compact to store and
 	  // can be compared reliably for equality:
 	  //	  
@@ -34,32 +39,48 @@ void loop(void)
       sprintf(buf, "Integer-only reading: Temperature %hi.%01hi C, Humidity %i.%01i %% RH",
                    myDHT22.getTemperatureCInt()/10, abs(myDHT22.getTemperatureCInt()%10),
                    myDHT22.getHumidityInt()/10, myDHT22.getHumidityInt()%10);
-      Serial.println(buf);
+      #if defined(output_serial)
+        Serial.println(buf);
+      #endif
       break;
     case DHT_ERROR_CHECKSUM:
-      Serial.print(serial_dht22_sensor_checksum);
-      Serial.print(myDHT22.getTemperatureC());
-      Serial.print(serial_dht22_c);
-      Serial.print(myDHT22.getHumidity());
-      Serial.println(serial_dht22_percent);
+      #if defined(output_serial)
+        Serial.print(serial_dht22_sensor_checksum);
+        Serial.print(myDHT22.getTemperatureC());
+        Serial.print(serial_dht22_c);
+        Serial.print(myDHT22.getHumidity());
+        Serial.println(serial_dht22_percent);
+      #endif
       break;
     case DHT_BUS_HUNG:
-      Serial.println(serial_dht22_sensor_buss_hung);
+      #if defined(output_serial)
+        Serial.println(serial_dht22_sensor_buss_hung);
+      #endif
       break;
     case DHT_ERROR_NOT_PRESENT:
-      Serial.println(serial_dht22_sensor_none);
+      #if defined(output_serial)
+        Serial.println(serial_dht22_sensor_none);
+      #endif
       break;
     case DHT_ERROR_ACK_TOO_LONG:
-      Serial.println(serial_dht22_sensor_ack_timeout);
+      #if defined(output_serial)
+        Serial.println(serial_dht22_sensor_ack_timeout);
+      #endif
       break;
     case DHT_ERROR_SYNC_TIMEOUT:
-      Serial.println(serial_dht22_sensor_sync_timeout);
+      #if defined(output_serial)
+        Serial.println(serial_dht22_sensor_sync_timeout);
+      #endif
       break;
     case DHT_ERROR_DATA_TIMEOUT:
-      Serial.println(serial_dht22_sensor_data_timeout);
+      #if defined(output_serial)
+        Serial.println(serial_dht22_sensor_data_timeout);
+      #endif
       break;
     case DHT_ERROR_TOOQUICK:
-      Serial.println(serial_dht22_sensor_poll_too_quick);
+      #if defined(output_serial)
+        Serial.println(serial_dht22_sensor_poll_too_quick);
+      #endif
       break;
   }
 }
