@@ -36,15 +36,17 @@ void displaySensorDetails(void)
 {
   sensor_t sensor;
   bmp.getSensor(&sensor);
-  Serial.println(serial_bmp180_devider);
-  Serial.print  (serial_bmp180_sensor); Serial.println(sensor.name);
-  Serial.print  (serial_bmp180_driver); Serial.println(sensor.version);
-  Serial.print  (serial_bmp180_uniqid); Serial.println(sensor.sensor_id);
-  Serial.print  (serial_bmp180_max_val_hpa); Serial.print(sensor.max_value);
-  Serial.print  (serial_bmp180_min_val_hpa); Serial.print(sensor.min_value);
-  Serial.print  (serial_bmp180_res_hpa); Serial.print(sensor.resolution);  
-  Serial.println(serial_bmp180_devider);
-  Serial.println("");
+  #if defined(output_serial);
+    Serial.println(serial_bmp180_devider);
+    Serial.print  (serial_bmp180_sensor); Serial.println(sensor.name);
+    Serial.print  (serial_bmp180_driver); Serial.println(sensor.version);
+    Serial.print  (serial_bmp180_uniqid); Serial.println(sensor.sensor_id);
+    Serial.print  (serial_bmp180_max_val_hpa); Serial.print(sensor.max_value);
+    Serial.print  (serial_bmp180_min_val_hpa); Serial.print(sensor.min_value);
+    Serial.print  (serial_bmp180_res_hpa); Serial.print(sensor.resolution);  
+    Serial.println(serial_bmp180_devider);
+    Serial.println("");
+  #endif
   delay(500);
 }
 
@@ -55,13 +57,16 @@ void displaySensorDetails(void)
 /**************************************************************************/
 void setup(void) 
 {
-  Serial.println(serial_bmp180_title); Serial.println("");
-  
+  #if defined(output_serial);
+    Serial.println(serial_bmp180_title); Serial.println("");
+  #endif
   /* Initialise the sensor */
   if(!bmp.begin())
   {
     /* There was a problem detecting the BMP085 ... check your connections */
-    Serial.print(serial_bmp180_sensor_none);
+    #if defined(output_serial);
+      Serial.print(serial_bmp180_sensor_none);
+    #endif
     while(1);
   }
   
@@ -85,9 +90,10 @@ void loop(void)
   if (event.pressure)
   {
     /* Display atmospheric pressue in hPa */
-    Serial.print(serial_bmp180_pressure_hpa);
-    Serial.print(event.pressure);
-
+    #if defined(output_serial);
+      Serial.print(serial_bmp180_pressure_hpa);
+      Serial.print(event.pressure);
+    #endif
     /* Calculating altitude with reasonable accuracy requires pressure    *
      * sea level pressure for your position at the moment the data is     *
      * converted, as well as the ambient temperature in degress           *
@@ -106,20 +112,24 @@ void loop(void)
     /* First we get the current temperature from the BMP085 */
     float temperature;
     bmp.getTemperature(&temperature);
-    Serial.print(serial_bmp180_temp_c);
-    Serial.print(temperature);
-
+    #if defined(output_serial);
+      Serial.print(serial_bmp180_temp_c);
+      Serial.print(temperature);
+    #endif
     /* Then convert the atmospheric pressure, and SLP to altitude         */
     /* Update this next line with the current SLP for better results      */
     float seaLevelPressure = SENSORS_PRESSURE_SEALEVELHPA;
-    Serial.print(serial_bmp180_altitude_m); 
-    Serial.print(bmp.pressureToAltitude(seaLevelPressure,
-                                        event.pressure)); 
-    Serial.println("");
+    #if defined(output_serial);
+      Serial.print(serial_bmp180_altitude_m); 
+      Serial.print(bmp.pressureToAltitude(seaLevelPressure, event.pressure)); 
+      Serial.println("");
+    #endif
   }
   else
   {
-    Serial.println(serial_bmp180_sensor_error);
+    #if defined(output_serial);
+      Serial.println(serial_bmp180_sensor_error);
+    #endif
   }
   delay(1000);
 }
