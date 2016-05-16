@@ -140,6 +140,9 @@
 // load mqtt messages if output_mqtt is defined
 #if defined(output_mqtt)
   // load mqtt messages
+  const char mqtt_out_topic[] PROGMEM  = {"outTopic"} 
+  const char mqtt_chan_anounce[] PROGMEM  = {"hello world"} 
+  const char mqtt_in_topic[] PROGMEM  = {"inTopic"}
 
   #if defined(enable_wifi)
 
