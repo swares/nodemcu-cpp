@@ -76,6 +76,7 @@ void reconnect() {
   }
 }
 
+// publish_mqtt
 void setup() {
   pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
   setup_wifi();
