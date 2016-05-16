@@ -87,6 +87,6 @@ void loop() {
     snprintf (msg, 75, "hello world #%ld", value);
     Serial.print(serial_mqtt_publish_msg);
     Serial.println(msg);
-    client.publish("outTopic", msg);
+    client.publish(mqtt_out_topic, msg);
   }
 }
