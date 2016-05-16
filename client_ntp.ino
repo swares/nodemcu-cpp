@@ -45,10 +45,15 @@ void setup()
 //  Serial.println("IP address: ");
 //  Serial.println(WiFi.localIP());
 
-  Serial.println(serial_ntp_starting_udp);
-  udp.begin(localPort);
-  Serial.print(serial_ntp_starting_udp);
-  Serial.println(udp.localPort());
+  #if defined(output_serial)
+    Serial.println(serial_ntp_starting_udp);
+  #endif
+  #if defined(output_serial)
+    udp.begin(localPort);
+    Serial.print(serial_ntp_starting_udp);
+    Serial.println(udp.localPort());
+  #endif
+ 
 }
 
 void loop()
@@ -62,11 +67,15 @@ void loop()
   
   int cb = udp.parsePacket();
   if (!cb) {
+  #if defined(output_serial)
     Serial.println(serial_ntp_no_packet_yet);
-  }
+  #endif
+ }
   else {
+  #if defined(output_serial)
     Serial.print(serial_ntp_packet_rec_len);
     Serial.println(cb);
+  #endif
     // We've received a packet, read the data from it
     udp.read(packetBuffer, NTP_PACKET_SIZE); // read the packet into the buffer
 
@@ -78,17 +87,19 @@ void loop()
     // combine the four bytes (two words) into a long integer
     // this is NTP time (seconds since Jan 1 1900):
     unsigned long secsSince1900 = highWord << 16 | lowWord;
-    Serial.print(serial_ntp_sec_since);
-    Serial.println(secsSince1900);
-
-    // now convert NTP time into everyday time:
-    Serial.print(serial_ntp_unix_time);
+    #if defined(output_serial)
+      Serial.print(serial_ntp_sec_since);
+      Serial.println(secsSince1900);
+      // now convert NTP time into everyday time:
+      Serial.print(serial_ntp_unix_time);
+    #endif
     // Unix time starts on Jan 1 1970. In seconds, that's 2208988800:
     const unsigned long seventyYears = 2208988800UL;
     // subtract seventy years:
     unsigned long epoch = secsSince1900 - seventyYears;
-    // print Unix time:
-    Serial.println(epoch);
+    #if defined(output_serial)
+      // print Unix time:
+      Serial.println(epoch);
 
 
     // print the hour, minute and second:
@@ -106,6 +117,7 @@ void loop()
       Serial.print(serial_ntp_padding);
     }
     Serial.println(epoch % 60); // print the second
+    #endif
   }
   // wait ten seconds before asking for the time again
   delay(10000);
@@ -114,7 +126,9 @@ void loop()
 // send an NTP request to the time server at the given address
 unsigned long sendNTPpacket(IPAddress& address)
 {
-  Serial.println(serial_ntp_sending_packet);
+  #if defined(output_serial)
+    Serial.println(serial_ntp_sending_packet);
+  #endif
   // set all bytes in the buffer to 0
   memset(packetBuffer, 0, NTP_PACKET_SIZE);
   // Initialize values needed to form NTP request
