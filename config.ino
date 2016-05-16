@@ -32,33 +32,29 @@
 // - See more at: http://www.esp8266.com/viewtopic.php?f=6&t=4348#sthash.59oBHYJ1.dpuf
 
 // base functions and outputs
-//# turn on and off output channels below
-#define output_serial;
-#if defined(output_serial);
-  SERIAL0_BAUD=115200;
-  Serial.begin(SERIAL0_BAUD);
-#endif
-#define enable_rtc;
-#define enable_sdcard;
-#define enable_client_wifi;
-#if defined(enable_client_wifi);
-  ESP8266_BAUD=115200;
-  #define enable_client_ntp;
-  const char* ntpServerName = "time.nist.gov";
-  const int NTP_PACKET_SIZE = 48; // NTP time stamp is in the first 48 bytes of the message
-  //# turn on and off output channels below
-  #define output_webserver;
-  #define output_mqtt;
-#endif
-
 //# turn on and off debugging
 //#define DEVMODE;
 
 //# logging - output all debugging output to sdcard
 //#define output_sdcard_debug_log;
 
-//# base parameters below
-#if defined(enable_client_wifi)
+//# turn on and off output channels below
+#define output_serial;
+#if defined(output_serial);
+  SERIAL0_BAUD=115200;
+  Serial.begin(SERIAL0_BAUD);
+#endif
+
+//# turn on and off RTC below // to comment it to turn it off
+#define enable_rtc;
+
+//# turn on and off SD Card below // to comment it to turn it off
+//#define enable_sdcard;
+
+//# turn on and off WIFI client below // to comment it to turn it off
+#define enable_client_wifi;
+#if defined(enable_client_wifi);
+  ESP8266_BAUD=115200;
   #ifndef LIB_ESP8266WiFi
     #define LIB_ESP8266WiFi
     #include <ESP8266WiFi.h>
@@ -66,9 +62,11 @@
   const char* ssid     = "your-ssid";
   const char* ap_pass = "your-user";
   const char* ap_user = "your-password";
-#endif
 
-#if defined(enable_client_ntp)
+  //# turn on and off NTP client below // to comment it to turn it off
+  #define enable_client_ntp;
+  const char* ntpServerName = "time.nist.gov";
+  const int NTP_PACKET_SIZE = 48; // NTP time stamp is in the first 48 bytes of the message
   const char* ntp_server = "10.136.151.102";
   unsigned int localPort = 2390;      // local port to listen for UDP packets
   #ifndef LIB_ESP8266WiFi
@@ -79,10 +77,12 @@
     #define LIB_WiFiUdp
     #include <WiFiUdp.h>
   #endif
-#endif
 
+  //# turn on and off output channels below
+  #define output_webserver;
 
-#if defined(enable_client_mqtt)
+  //# turn on and off output channels below
+  #define output_mqtt;
   const char* mqtt_server = "broker.mqtt-dashboard.com";
   #ifndef LIB_ESP8266WiFi
     #define LIB_ESP8266WiFi
@@ -92,6 +92,7 @@
     #define LIB_PubSubClient
     #include <PubSubClient.h>
   #endif
+
 #endif
 
 //# Enable Sensor Group
