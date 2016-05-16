@@ -57,4 +57,8 @@ Layout
         Clients
         clients return 1 or higher on success (true), 0 on failure (false)
         
+        Functions
+        int connect_to_wifi()
+        int get_time_ntp()
+        int publish_mqtt()
         
