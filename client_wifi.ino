@@ -1,6 +1,6 @@
 //# Place holder for WIFI networking code
 
-private connect_to_ap() {
+int connect_to_ap() {
   // We start by connecting to a WiFi network
   #if defined(output_serial)  
     Serial.println();
@@ -24,11 +24,5 @@ private connect_to_ap() {
     Serial.println(WiF
     i.localIP());
   #endif
-  return WiFi.localIP()
-}
-
-void start(){
-  connect_to_ap()  
-//  myip = connect_to_ap()  
-//  return myip
+  return 1;
 }
