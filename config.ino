@@ -31,6 +31,21 @@
 // +---------------------+----------------+-----------------------+------------------------+------------------------+
 // - See more at: http://www.esp8266.com/viewtopic.php?f=6&t=4348#sthash.59oBHYJ1.dpuf
 
+/*
+The following table provides the most used C/C++ types to be used when programming low resource devices (but not only):
+Datatypes 	                  Size in Bytes 	Values
+boolean, bool 	                        1 	  true(1) or false(0)
+char 	                                  1 	  ASCII character or signed value in the range [-128, 127]
+unsigned char, byte, uint8_t 	          1 	  ASCII character or unsigned value in the range [0, 255]
+int, short 	                            2 	  signed value in the range [-32768, 32767]
+unsigned int, word, uint16_t 	          2 	  unsigned value in the range [0, 65535]
+long 	                                  4 	  signed value in the range [2147483648, 2147483647]
+unsigned long, uint32_t 	              4 	  unsigned value in the range [0, 4294967295]
+float, double 	                        4 	  floating point value in the range [-3.4028235e+38, 3.4028235e+38]
+
+NOTE: float and double are the same in this (Arduino) platform
+*/
+
 // base functions and outputs
 //# turn on and off debugging
 //#define DEVMODE;
