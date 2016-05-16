@@ -83,9 +83,10 @@ PWF_AS3935_I2C  lightning0((uint8_t)IRQ_PIN, (uint8_t)SI_PIN, (uint8_t)AS3935_AD
 void setup()
 {
   
-  Serial.println(serial_as3935_title);
-  Serial.println(serial_as3935_boot);
-  
+  #if defined(output_serial);
+    Serial.println(serial_as3935_title);
+    Serial.println(serial_as3935_boot);
+  #endif  
   // setup for the the I2C library: (enable pullups, set speed to 400kHz)
   I2c.begin();
   I2c.pullup(true);
@@ -122,32 +123,38 @@ void loop()
   uint8_t int_src = lightning0.AS3935_GetInterruptSrc();
   if(0 == int_src)
   {
-    Serial.println(serial_as3935_sensor_int_src_why);
+    #if defined(output_serial);
+      Serial.println(serial_as3935_sensor_int_src_why);
+    #endif
   }
   else if(1 == int_src)
   {
     uint8_t lightning_dist_km = lightning0.AS3935_GetLightningDistKm();
-    Serial.print(serial_as3935_detected);
-    Serial.print(lightning_dist_km);
-    Serial.println(serial_as3935_km);
-
     uint8_t lightning_dist_mi = lightning_dist_km * 0.621;
-    Serial.print(lightning_dist_mi);
-    Serial.println(serial_as3935_mi);
-
     uint8_t lightning_energy = lightning0.AS3935_GetStrikeEnergyRaw();
-    Serial.print(serial_as3935_energy);
-    Serial.print(lightning_energy);
-    Serial.println(serial_as3935_raw);
+    #if defined(output_serial);
+      Serial.print(serial_as3935_detected);
+      Serial.print(lightning_dist_km);
+      Serial.println(serial_as3935_km);
+      Serial.print(lightning_dist_mi);
+      Serial.println(serial_as3935_mi);
+      Serial.print(serial_as3935_energy);
+      Serial.print(lightning_energy);
+      Serial.println(serial_as3935_raw);
+    #endif
 
   }
   else if(2 == int_src)
   {
-    Serial.println(serial_as3935_sensor_disturber);
+    #if defined(output_serial);
+      Serial.println(serial_as3935_sensor_disturber);
+    #endif
   }
   else if(3 == int_src)
   {
-    Serial.println(serial_as3935_sensor_noisy);
+    #if defined(output_serial);
+      Serial.println(serial_as3935_sensor_noisy);
+    #endif
   }
   lightning0.AS3935_PrintAllRegs(); // for debug...
 }
