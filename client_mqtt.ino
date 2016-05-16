@@ -50,12 +50,12 @@ void reconnect() {
   while (!client.connected()) {
     Serial.print(serial_mqtt_connecting);
     // Attempt to connect
-    if (client.connect(serial_mqtt_connected)) {
-      Serial.println("connected");
+    if (client.connect(client.state())) {
+      Serial.println(serial_mqtt_connected);
       // Once connected, publish an announcement...
-      client.publish("outTopic", "hello world");
+      client.publish(mqtt_out_topic, mqtt_chan_anounce);
       // ... and resubscribe
-      client.subscribe("inTopic");
+      client.subscribe(mqtt_in_topic);
     } else {
       Serial.print(serial_mqtt_failed);
       Serial.print(client.state());
@@ -68,7 +68,6 @@ void reconnect() {
 
 void setup() {
   pinMode(BUILTIN_LED, OUTPUT);     // Initialize the BUILTIN_LED pin as an output
-  Serial.begin(115200);
   setup_wifi();
   client.setServer(mqtt_server, 1883);
   client.setCallback(callback);
