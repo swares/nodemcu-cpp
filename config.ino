@@ -117,7 +117,23 @@ one byte of RAM (the entire 2KB RAM memory of an ATmega328p can be occupied by a
     #define LIB_PubSubClient
     #include <PubSubClient.h>
   #endif
-
+  // Define mqtt channels to use # 
+  #ifdef enable_client_wifi;
+  const char mqtt_chan_client_wifi[] PROGMEM = { "ems_client_wifi" };
+  #endif
+  #ifdef enable_client_ntp;
+    const char mqtt_chan_client_ntp[] PROGMEM = { "ems_client_ntp" };
+  #endif
+  #ifdef enable_client_mqtt;
+    const char mqtt_chan_client_mqtt[] PROGMEM = { "ems_client_mqtt" };
+  #endif
+// TODO: finish adding ifdef statements below
+  const char mqtt_chan_rtc_ds3231[] PROGMEM = { "ems_rtc_ds3231" };
+  const char mqtt_chan_sensor_as3935[] PROGMEM = { "ems_sensor_as3935" };
+  const char mqtt_chan_sensor_bmp180[] PROGMEM = { "ems_sensor_bmp180" };
+  const char mqtt_chan_sensor_dht22[] PROGMEM = { "ems_sensor_dht22" };
+  const char mqtt_chan_server_httpd[] PROGMEM = { "ems_server_httpd" };
+  const char mqtt_chan_device_health[] PROGMEM = { "ems_device_health" };
 #endif
 
 //# Enable Sensor Group
