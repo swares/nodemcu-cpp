@@ -78,7 +78,8 @@ one byte of RAM (the entire 2KB RAM memory of an ATmega328p can be occupied by a
 //# turn on and off WIFI client below // to comment it to turn it off
 #define enable_client_wifi;
 #if defined(enable_client_wifi);
-  ESP8266_BAUD=115200;
+  const int ESP8266_RETRY=500
+  const int ESP8266_BAUD=115200;
   #ifndef LIB_ESP8266WiFi
     #define LIB_ESP8266WiFi
     #include <ESP8266WiFi.h>
