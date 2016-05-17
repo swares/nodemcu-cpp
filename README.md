@@ -88,3 +88,7 @@ Layout
         Serial output and MQTT msg output calls are embedded in each finction as needed.
         Web Output is handled by the webserver calling ajax functions
         MQTT has its own PubSub client
+
+        MQTT and HTTPD - wake on lan incomming
+        MQTT and Sensors - Periodic updates to MQTT
+        
