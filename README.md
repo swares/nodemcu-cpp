@@ -83,3 +83,8 @@ Layout
           else
             return (((uint16_t)&newVariable) - ((uint16_t)__brkval));
         };
+
+
+        Serial output and MQTT msg output calls are embedded in each finction as needed.
+        Web Output is handled by the webserver calling ajax functions
+        MQTT has its own PubSub client
