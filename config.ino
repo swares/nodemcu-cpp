@@ -130,10 +130,17 @@ one byte of RAM (the entire 2KB RAM memory of an ATmega328p can be occupied by a
 // TODO: finish adding ifdef statements below
   const char mqtt_chan_rtc_ds3231[] PROGMEM = { "ems_rtc_ds3231" };
   const char mqtt_chan_sensor_as3935[] PROGMEM = { "ems_sensor_as3935" };
-  const char mqtt_chan_sensor_bmp180[] PROGMEM = { "ems_sensor_bmp180" };
-  const char mqtt_chan_sensor_dht22[] PROGMEM = { "ems_sensor_dht22" };
-  const char mqtt_chan_server_httpd[] PROGMEM = { "ems_server_httpd" };
-  const char mqtt_chan_device_health[] PROGMEM = { "ems_device_health" };
+  #if defined(enable_bmp180)
+    const char mqtt_chan_sensor_bmp180[] PROGMEM = { "ems_sensor_bmp180" };
+  #if defined(enable_bmp180)
+    const char mqtt_chan_sensor_dht22[] PROGMEM = { "ems_sensor_dht22" };
+  #endif
+  #if defined(enable_httpd)
+    const char mqtt_chan_server_httpd[] PROGMEM = { "ems_server_httpd" };
+  #endif
+  #if defined(enable_device_health)
+    const char mqtt_chan_device_health[] PROGMEM = { "ems_device_health" };
+  #endif
 #endif
 
 //# Enable Sensor Group
