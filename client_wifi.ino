@@ -23,5 +23,13 @@ int connect_to_wifi() {
     Serial.println(serial_wifi_ip_address);
     Serial.println(WiFi.localIP());
   #endif
+  
+  // place holder for mqtt send message - device connected to wifi
+  #if defined(output_mqtt)
+//    Serial.println(serial_wifi_connected);  
+//    Serial.println(serial_wifi_ip_address);
+//    Serial.println(WiFi.localIP());
+  #endif
+  
   return 1;
 }
