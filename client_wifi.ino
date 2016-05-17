@@ -8,12 +8,20 @@ int connect_to_wifi() {
     Serial.print(serial_wifi_title);
     Serial.println(ssid);
   #endif
+  #if defined(output_mqtt)
+//    client.print(serial_wifi_title);
+//    client.println(ssid);
+  #endif
+
   WiFi.begin(ssid, password);
   
   while (WiFi.status() != WL_CONNECTED) {
     delay(ESP8266_RETRY);
     #if defined(output_serial)
       Serial.print(serial_wifi_waiting);
+    #endif
+    #if defined(output_mqtt)
+//      client.print(serial_wifi_waiting);
     #endif
   }
 
@@ -23,12 +31,10 @@ int connect_to_wifi() {
     Serial.println(serial_wifi_ip_address);
     Serial.println(WiFi.localIP());
   #endif
-  
-  // place holder for mqtt send message - device connected to wifi
   #if defined(output_mqtt)
-//    Serial.println(serial_wifi_connected);  
-//    Serial.println(serial_wifi_ip_address);
-//    Serial.println(WiFi.localIP());
+//    client.println(serial_wifi_connected);  
+//    client.println(serial_wifi_ip_address);
+//    client.println(WiFi.localIP());
   #endif
   
   return 1;
