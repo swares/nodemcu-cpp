@@ -11,7 +11,7 @@ int connect_to_wifi() {
   WiFi.begin(ssid, password);
   
   while (WiFi.status() != WL_CONNECTED) {
-    delay(500);
+    delay(ESP8266_RETRY);
     #if defined(output_serial)
       Serial.print(serial_wifi_waiting);
     #endif
@@ -21,8 +21,7 @@ int connect_to_wifi() {
     Serial.println("");
     Serial.println(serial_wifi_connected);  
     Serial.println(serial_wifi_ip_address);
-    Serial.println(WiF
-    i.localIP());
+    Serial.println(WiFi.localIP());
   #endif
   return 1;
 }
