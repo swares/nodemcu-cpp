@@ -47,7 +47,7 @@ int get_time_ntp()
   #if defined(output_serial)
     Serial.println(serial_ntp_no_packet_yet);
   #endif
- }
+}
   else {
   #if defined(output_serial)
     Serial.print(serial_ntp_packet_rec_len);
@@ -102,6 +102,9 @@ unsigned long sendNTPpacket(IPAddress& address)
 {
   #if defined(output_serial)
     Serial.println(serial_ntp_sending_packet);
+  #endif
+  #if defined(output_mqtt)
+//    client.println(serial_wifi_connected);  
   #endif
   // set all bytes in the buffer to 0
   memset(packetBuffer, 0, NTP_PACKET_SIZE);
