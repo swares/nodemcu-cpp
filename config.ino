@@ -45,7 +45,6 @@ float, double 	                        4 	  floating point value in the range [-
 
 NOTE: float and double are the same in this (Arduino) platform
 
-
 use stack instead of heap whenever possible - stack memory is preferred because the memory is complete freed 
 up when the function returns, and also the stack memory is fragmentation free. 
 In this means using local variables and avoid using dynamic memory allocation (i.e., malloc, calloc and realloc calls).
@@ -118,25 +117,15 @@ one byte of RAM (the entire 2KB RAM memory of an ATmega328p can be occupied by a
     #include <PubSubClient.h>
   #endif
   // Define mqtt channels to use # 
-  #ifdef enable_client_wifi;
-  const char mqtt_chan_client_wifi[] PROGMEM = { "ems_client_wifi" };
+  // TODO: finish adding ifdef statements below
+  #if defined(enable_as3935)
+    const char mqtt_chan_sensor_as3935[] PROGMEM = { "ems_sensor_as3935" };
   #endif
-  #ifdef enable_client_ntp;
-    const char mqtt_chan_client_ntp[] PROGMEM = { "ems_client_ntp" };
-  #endif
-  #ifdef enable_client_mqtt;
-    const char mqtt_chan_client_mqtt[] PROGMEM = { "ems_client_mqtt" };
-  #endif
-// TODO: finish adding ifdef statements below
-  const char mqtt_chan_rtc_ds3231[] PROGMEM = { "ems_rtc_ds3231" };
-  const char mqtt_chan_sensor_as3935[] PROGMEM = { "ems_sensor_as3935" };
   #if defined(enable_bmp180)
     const char mqtt_chan_sensor_bmp180[] PROGMEM = { "ems_sensor_bmp180" };
-  #if defined(enable_bmp180)
-    const char mqtt_chan_sensor_dht22[] PROGMEM = { "ems_sensor_dht22" };
   #endif
-  #if defined(enable_httpd)
-    const char mqtt_chan_server_httpd[] PROGMEM = { "ems_server_httpd" };
+  #if defined(enable_dht22)
+    const char mqtt_chan_sensor_dht22[] PROGMEM = { "ems_sensor_dht22" };
   #endif
   #if defined(enable_device_health)
     const char mqtt_chan_device_health[] PROGMEM = { "ems_device_health" };
@@ -224,7 +213,6 @@ one byte of RAM (the entire 2KB RAM memory of an ATmega328p can be occupied by a
   #define AS3935_DIST_EN       1
 #endif
 // ------------------------------
-
 
 //#if defined(enable_)
 //
