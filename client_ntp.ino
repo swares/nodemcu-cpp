@@ -29,8 +29,8 @@ int get_time_ntp()
   #if defined(output_serial)
     Serial.println(serial_ntp_starting_udp);
   #endif
+  udp.begin(localPort);
   #if defined(output_serial)
-    udp.begin(localPort);
     Serial.print(serial_ntp_starting_udp);
     Serial.println(udp.localPort());
   #endif
